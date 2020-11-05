@@ -51,9 +51,9 @@ function Header({ handleLogout, isAuthenticated }) {
                   </Link>
                 </div>
               ))}
-              {isAuthenticated ? (
-                <Link className={classes.link} to={ROUTES.home}>
-                  <div>
+              <div className={classes.buttonWrapper}>
+                {isAuthenticated ? (
+                  <Link className={classes.link} to={ROUTES.home}>
                     <Button
                       color="primary"
                       onClick={handleLogout}
@@ -61,17 +61,15 @@ function Header({ handleLogout, isAuthenticated }) {
                     >
                       {BUTTON_LABEL.logout}
                     </Button>
-                  </div>
-                </Link>
-              ) : (
-                <Link className={classes.link} to={ROUTES.login}>
-                  <div>
+                  </Link>
+                ) : (
+                  <Link className={classes.link} to={ROUTES.login}>
                     <Button color="primary" variant="contained">
                       {BUTTON_LABEL.login}
                     </Button>
-                  </div>
-                </Link>
-              )}
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </Toolbar>

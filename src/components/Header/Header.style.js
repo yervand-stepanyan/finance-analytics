@@ -41,4 +41,9 @@ export const useStyles = makeStyles(theme => ({
   menuItemText: {
     color: theme.color.mainTextColor,
   },
+  buttonWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '94px',
+  },
 }));
