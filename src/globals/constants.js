@@ -1,3 +1,4 @@
+import login from '../assets/images/login-1760x990.png';
 import logo from '../assets/images/financial-analytics-48x48.png';
 import ROUTES from '../routes';
 
@@ -13,6 +14,17 @@ export const IMAGE = {
   logo: {
     src: logo,
     title: 'Logo image',
+  },
+  login: {
+    src: login,
+    title: 'Login image',
+  },
+};
+export const LOGIN_SECTION = {
+  title: 'Log In',
+  placeholder: {
+    username: 'example@mail.com',
+    password: 'Password',
   },
 };
 export const MENU_ITEMS = [
