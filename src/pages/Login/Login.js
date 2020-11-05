@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import LockIcon from '@material-ui/icons/Lock';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-import { BUTTON_LABEL } from '../../globals/constants';
+import { BUTTON_LABEL, IMAGE, LOGIN_SECTION } from '../../globals/constants';
 import ROUTES from '../../routes';
 import { useStyles } from './Login.style';
 
@@ -12,6 +21,25 @@ function Login({ handleLogin }) {
   const classes = useStyles();
   const history = useHistory();
   const { state } = useLocation();
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState('');
+
+  const handleUsernameChange = event => {
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = event => {
+    setPassword(event.target.value);
+  };
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
 
   const login = () => {
     handleLogin();
@@ -21,10 +49,72 @@ function Login({ handleLogin }) {
 
   return (
     <div className={classes.loginContainer}>
-      <div>
-        <Button color="primary" onClick={login} variant="contained">
-          {BUTTON_LABEL.login}
-        </Button>
+      <div className={classes.contentWrapper}>
+        <div className={classes.inputSectionWrapper}>
+          <Paper className={classes.paper} square>
+            <div className={classes.titleWrapper}>
+              <Typography variant="h4">{LOGIN_SECTION.title}</Typography>
+            </div>
+            <div className={classes.usernameWrapper}>
+              <TextField
+                fullWidth
+                id="input-for-username"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AccountCircle />
+                    </InputAdornment>
+                  ),
+                }}
+                onChange={e => handleUsernameChange(e)}
+                placeholder={LOGIN_SECTION.placeholder.username}
+                value={username}
+              />
+            </div>
+            <div className={classes.passwordWrapper}>
+              <TextField
+                fullWidth
+                id="input-for-password"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LockIcon />
+                    </InputAdornment>
+                  ),
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                      >
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+                onChange={e => handlePasswordChange(e)}
+                placeholder={LOGIN_SECTION.placeholder.password}
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+              />
+            </div>
+            <div>
+              <Button color="primary" onClick={login} variant="contained">
+                {BUTTON_LABEL.login}
+              </Button>
+            </div>
+          </Paper>
+        </div>
+        <div className={classes.imageSectionWrapper}>
+          <div className={classes.imageWrapper}>
+            <img
+              alt={IMAGE.login.title}
+              className={classes.image}
+              src={IMAGE.login.src}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
