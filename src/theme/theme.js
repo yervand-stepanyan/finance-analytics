@@ -19,7 +19,9 @@ export const theme = createMuiTheme({
     small: `${MAIN_SPACING_VALUE / 2}px`,
     base: `${MAIN_SPACING_VALUE}px`,
     midLarge: `${MAIN_SPACING_VALUE * 1.5}px`,
+    large: `${MAIN_SPACING_VALUE * 2}px`,
     xLarge: `${MAIN_SPACING_VALUE * 3}px`,
+    xxLarge: `${MAIN_SPACING_VALUE * 4}px`,
   },
   logoSize: `${LOGO_SIZE}px`,
 });
