@@ -44,11 +44,19 @@ function Login({ handleLogin, handleRoute }) {
   const login = () => {
     const route = state?.from || ROUTES.home;
 
-    handleLogin();
+    handleLogin(username, password);
 
     history.push(route);
 
     handleRoute(route);
+  };
+
+  const handleSubmitOnEnter = event => {
+    if (event.key === 'Enter') {
+      if (username && password) {
+        login();
+      }
+    }
   };
 
   return (
@@ -71,6 +79,7 @@ function Login({ handleLogin, handleRoute }) {
                   ),
                 }}
                 onChange={e => handleUsernameChange(e)}
+                onKeyDown={e => handleSubmitOnEnter(e)}
                 placeholder={LOGIN_SECTION.placeholder.username}
                 value={username}
               />
@@ -98,6 +107,7 @@ function Login({ handleLogin, handleRoute }) {
                   ),
                 }}
                 onChange={e => handlePasswordChange(e)}
+                onKeyDown={e => handleSubmitOnEnter(e)}
                 placeholder={LOGIN_SECTION.placeholder.password}
                 type={showPassword ? 'text' : 'password'}
                 value={password}
@@ -106,6 +116,7 @@ function Login({ handleLogin, handleRoute }) {
             <div className={classes.buttonWrapper}>
               <Button
                 color="primary"
+                disabled={!username || !password}
                 fullWidth
                 onClick={login}
                 variant="contained"
