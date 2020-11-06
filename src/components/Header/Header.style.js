@@ -35,29 +35,31 @@ export const useStyles = makeStyles(theme => ({
     display: 'none',
     '@media only screen and (min-width: 600px)': {
       display: 'flex',
-      alignItems: 'center',
     },
-  },
-  menuItem: {
-    marginRight: theme.customSpacing.base,
-    '@media only screen and (min-width: 600px)': {
-      marginRight: theme.customSpacing.xLarge,
-    },
-  },
-  menuItemText: {
-    color: theme.color.mainTextColor,
-  },
-  buttonGroupWrapper: {
-    display: 'flex',
-  },
-  buttonWrapper: {
-    display: 'flex',
-    justifyContent: 'center',
-    width: theme.size.headerButton,
   },
   menuButtonWrapper: {
+    display: 'flex',
     '@media only screen and (min-width: 600px)': {
       display: 'none',
     },
+  },
+  menuPopup: {
+    position: 'absolute',
+    right: theme.customSpacing.base,
+    top: theme.size.headerHeight,
+    '@media only screen and (min-width: 600px)': {
+      display: 'none',
+    },
+  },
+  hideMenuPopup: {
+    display: 'none',
+  },
+  paper: {
+    padding: theme.customSpacing.base,
+  },
+  menuPopupContentWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
   },
 }));

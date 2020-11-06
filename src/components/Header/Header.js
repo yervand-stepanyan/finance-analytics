@@ -3,28 +3,36 @@ import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-import {
-  BUTTON_LABEL,
-  IMAGE,
-  MENU_ITEMS,
-  PROJECT_TITLE,
-} from '../../globals/constants';
+import { IMAGE, PROJECT_TITLE } from '../../globals/constants';
+import MenuSection from '../MenuSection';
 import ROUTES from '../../routes';
 import { useStyles } from './Header.style';
 
-function Header({ handleLogout, handleRoute, isAuthenticated }) {
+function Header({
+  handleLogout,
+  handleMenu,
+  handleRoute,
+  isAuthenticated,
+  showMenu,
+}) {
   const classes = useStyles();
   const { pathname } = useLocation();
   const isRoute = pathname === ROUTES.login || pathname === ROUTES.signup;
 
   const handleButtonClick = routeTo => {
     handleRoute(routeTo);
+
+    handleMenu(false);
+  };
+
+  const handleHome = () => {
+    handleMenu(false);
   };
 
   return (
@@ -32,7 +40,11 @@ function Header({ handleLogout, handleRoute, isAuthenticated }) {
       <AppBar className={classes.headerContainer} position="static">
         <Toolbar>
           <div className={classes.headerContentWrapper}>
-            <Link className={classes.link} to={ROUTES.home}>
+            <Link
+              className={classes.link}
+              onClick={handleHome}
+              to={ROUTES.home}
+            >
               <div className={classes.logoAndTitleWrapper}>
                 <div className={classes.logoWrapper}>
                   <img
@@ -47,62 +59,33 @@ function Header({ handleLogout, handleRoute, isAuthenticated }) {
               </div>
             </Link>
             <div className={classes.menuWrapper}>
-              {MENU_ITEMS.map(item => (
-                <div className={classes.menuItem} key={item.name}>
-                  <Link className={classes.link} to={item.route}>
-                    <Typography
-                      className={classes.menuItemText}
-                      variant="subtitle1"
-                    >
-                      {item.name}
-                    </Typography>
-                  </Link>
-                </div>
-              ))}
-              <div>
-                {isAuthenticated ? (
-                  <div className={classes.buttonWrapper}>
-                    <Link className={classes.link} to={ROUTES.home}>
-                      <Button
-                        color="primary"
-                        onClick={handleLogout}
-                        variant="contained"
-                      >
-                        {BUTTON_LABEL.logout}
-                      </Button>
-                    </Link>
-                  </div>
-                ) : (
-                  <div className={classes.buttonGroupWrapper}>
-                    <div className={classes.buttonWrapper}>
-                      <Link className={classes.link} to={ROUTES.login}>
-                        <Button
-                          color="primary"
-                          onClick={() => handleButtonClick(ROUTES.login)}
-                        >
-                          {BUTTON_LABEL.login}
-                        </Button>
-                      </Link>
-                    </div>
-                    <div className={classes.buttonWrapper}>
-                      <Link className={classes.link} to={ROUTES.signup}>
-                        <Button
-                          color="primary"
-                          onClick={() => handleButtonClick(ROUTES.signup)}
-                          variant="contained"
-                        >
-                          {BUTTON_LABEL.signup}
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                )}
-              </div>
+              <MenuSection
+                handleButtonClick={handleButtonClick}
+                handleLogout={handleLogout}
+                handleMenu={handleMenu}
+                isAuthenticated={isAuthenticated}
+              />
             </div>
             <div className={classes.menuButtonWrapper}>
-              <IconButton>
-                <MenuIcon />
-              </IconButton>
+              <div>
+                <IconButton onClick={() => handleMenu()}>
+                  <MenuIcon />
+                </IconButton>
+              </div>
+              <div
+                className={`${
+                  showMenu ? classes.menuPopup : classes.hideMenuPopup
+                }`}
+              >
+                <Paper className={classes.paper}>
+                  <MenuSection
+                    handleButtonClick={handleButtonClick}
+                    handleLogout={handleLogout}
+                    handleMenu={handleMenu}
+                    isAuthenticated={isAuthenticated}
+                  />
+                </Paper>
+              </div>
             </div>
           </div>
         </Toolbar>
@@ -113,8 +96,10 @@ function Header({ handleLogout, handleRoute, isAuthenticated }) {
 
 Header.propTypes = {
   handleLogout: PropTypes.func.isRequired,
+  handleMenu: PropTypes.func.isRequired,
   handleRoute: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
+  showMenu: PropTypes.bool.isRequired,
 };
 
 export default Header;
