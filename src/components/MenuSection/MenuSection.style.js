@@ -6,8 +6,6 @@ export const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     flexDirection: 'column',
     '@media only screen and (min-width: 600px)': {
-      // display: 'flex',
-      // alignItems: 'center',
       flexDirection: 'row',
     },
   },
