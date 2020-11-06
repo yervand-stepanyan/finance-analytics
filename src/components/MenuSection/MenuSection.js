@@ -13,7 +13,7 @@ import { useStyles } from './MenuSection.style';
 function MenuSection({
   handleButtonClick,
   handleLogout,
-  handleMenu,
+  handleOpenMenu,
   isAuthenticated,
 }) {
   const classes = useStyles();
@@ -21,7 +21,7 @@ function MenuSection({
   const logout = () => {
     handleLogout();
 
-    handleMenu();
+    handleOpenMenu();
   };
 
   return (
@@ -30,7 +30,7 @@ function MenuSection({
         <div className={classes.menuItem} key={item.name}>
           <Link
             className={classes.link}
-            onClick={() => handleMenu()}
+            onClick={() => handleOpenMenu()}
             to={item.route}
           >
             <Typography className={classes.menuItemText} variant="subtitle1">
@@ -81,7 +81,7 @@ function MenuSection({
 MenuSection.propTypes = {
   handleButtonClick: PropTypes.func.isRequired,
   handleLogout: PropTypes.func.isRequired,
-  handleMenu: PropTypes.func.isRequired,
+  handleOpenMenu: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
 };
 

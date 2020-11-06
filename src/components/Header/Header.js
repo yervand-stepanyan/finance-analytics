@@ -16,10 +16,10 @@ import { useStyles } from './Header.style';
 
 function Header({
   handleLogout,
-  handleMenu,
+  handleOpenMenu,
   handleRoute,
   isAuthenticated,
-  showMenu,
+  isMenuOpen,
 }) {
   const classes = useStyles();
   const { pathname } = useLocation();
@@ -28,11 +28,11 @@ function Header({
   const handleButtonClick = routeTo => {
     handleRoute(routeTo);
 
-    handleMenu(false);
+    handleOpenMenu(false);
   };
 
   const handleHome = () => {
-    handleMenu(false);
+    handleOpenMenu(false);
   };
 
   return (
@@ -62,26 +62,26 @@ function Header({
               <MenuSection
                 handleButtonClick={handleButtonClick}
                 handleLogout={handleLogout}
-                handleMenu={handleMenu}
+                handleOpenMenu={handleOpenMenu}
                 isAuthenticated={isAuthenticated}
               />
             </div>
             <div className={classes.menuButtonWrapper}>
               <div>
-                <IconButton onClick={() => handleMenu()}>
+                <IconButton onClick={() => handleOpenMenu()}>
                   <MenuIcon />
                 </IconButton>
               </div>
               <div
                 className={`${
-                  showMenu ? classes.menuPopup : classes.hideMenuPopup
+                  isMenuOpen ? classes.menuPopup : classes.hideMenuPopup
                 }`}
               >
                 <Paper className={classes.paper}>
                   <MenuSection
                     handleButtonClick={handleButtonClick}
                     handleLogout={handleLogout}
-                    handleMenu={handleMenu}
+                    handleOpenMenu={handleOpenMenu}
                     isAuthenticated={isAuthenticated}
                   />
                 </Paper>
@@ -96,10 +96,10 @@ function Header({
 
 Header.propTypes = {
   handleLogout: PropTypes.func.isRequired,
-  handleMenu: PropTypes.func.isRequired,
+  handleOpenMenu: PropTypes.func.isRequired,
   handleRoute: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
-  showMenu: PropTypes.bool.isRequired,
+  isMenuOpen: PropTypes.bool.isRequired,
 };
 
 export default Header;
