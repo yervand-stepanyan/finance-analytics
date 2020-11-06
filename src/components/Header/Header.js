@@ -21,7 +21,7 @@ function Header({ handleLogout, handleRoute, isAuthenticated }) {
   const { pathname } = useLocation();
   const isRoute = pathname === ROUTES.login || pathname === ROUTES.signup;
 
-  const handleLoginClick = routeTo => {
+  const handleButtonClick = routeTo => {
     handleRoute(routeTo);
   };
 
@@ -57,28 +57,40 @@ function Header({ handleLogout, handleRoute, isAuthenticated }) {
                   </Link>
                 </div>
               ))}
-              <div className={classes.buttonWrapper}>
-                {isAuthenticated ? (
-                  <Link className={classes.link} to={ROUTES.home}>
+              <div className={classes.buttonGroupWrapper}>
+                <div className={classes.buttonWrapper}>
+                  {isAuthenticated ? (
+                    <Link className={classes.link} to={ROUTES.home}>
+                      <Button
+                        color="primary"
+                        onClick={handleLogout}
+                        variant="contained"
+                      >
+                        {BUTTON_LABEL.logout}
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Link className={classes.link} to={ROUTES.login}>
+                      <Button
+                        color="primary"
+                        onClick={() => handleButtonClick(ROUTES.login)}
+                      >
+                        {BUTTON_LABEL.login}
+                      </Button>
+                    </Link>
+                  )}
+                </div>
+                <div className={classes.buttonWrapper}>
+                  <Link className={classes.link} to={ROUTES.signup}>
                     <Button
                       color="primary"
-                      onClick={handleLogout}
+                      onClick={() => handleButtonClick(ROUTES.signup)}
                       variant="contained"
                     >
-                      {BUTTON_LABEL.logout}
+                      {BUTTON_LABEL.signup}
                     </Button>
                   </Link>
-                ) : (
-                  <Link className={classes.link} to={ROUTES.login}>
-                    <Button
-                      color="primary"
-                      onClick={() => handleLoginClick(ROUTES.login)}
-                      variant="contained"
-                    >
-                      {BUTTON_LABEL.login}
-                    </Button>
-                  </Link>
-                )}
+                </div>
               </div>
             </div>
           </div>

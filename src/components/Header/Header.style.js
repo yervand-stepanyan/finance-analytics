@@ -44,9 +44,12 @@ export const useStyles = makeStyles(theme => ({
   menuItemText: {
     color: theme.color.mainTextColor,
   },
+  buttonGroupWrapper: {
+    display: 'flex',
+  },
   buttonWrapper: {
     display: 'flex',
     justifyContent: 'center',
-    width: '98px',
+    width: '96px',
   },
 }));
