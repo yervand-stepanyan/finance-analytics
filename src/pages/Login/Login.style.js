@@ -2,20 +2,23 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles(theme => ({
   loginContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    boxSizing: 'border-box',
     minHeight: 'inherit',
-    padding: `${theme.customSpacing.xLarge} ${theme.customSpacing.base} 0`,
+    padding: `0 ${theme.customSpacing.base}`,
   },
   contentWrapper: {
     display: 'flex',
     flexDirection: 'column',
-    height: '65vh',
+    minHeight: '65vh',
     width: '100%',
     '@media only screen and (min-width: 600px)': {
       flexDirection: 'row',
     },
   },
   inputSectionWrapper: {
-    height: 'inherit',
+    minHeight: 'inherit',
     width: '100%',
     '@media only screen and (min-width: 600px)': {
       width: '40%',
@@ -26,7 +29,7 @@ export const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     boxSizing: ' border-box',
-    height: 'inherit',
+    minHeight: 'inherit',
     padding: `${theme.customSpacing.large}`,
     '@media only screen and (min-width: 600px)': {
       padding: `${theme.customSpacing.large} ${theme.customSpacing.xxLarge}`,
@@ -40,6 +43,13 @@ export const useStyles = makeStyles(theme => ({
   },
   passwordWrapper: {
     marginBottom: theme.customSpacing.large,
+  },
+  buttonWrapper: {
+    marginBottom: theme.customSpacing.large,
+  },
+  signupWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
   },
   imageSectionWrapper: {
     width: '100%',

@@ -1,6 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles(theme => ({
+  noHeader: {
+    display: 'none',
+  },
   headerContainer: {
     backgroundColor: theme.color.headerBackgroundColor,
   },
@@ -44,6 +47,6 @@ export const useStyles = makeStyles(theme => ({
   buttonWrapper: {
     display: 'flex',
     justifyContent: 'center',
-    width: '94px',
+    width: '98px',
   },
 }));

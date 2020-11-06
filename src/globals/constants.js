@@ -3,8 +3,8 @@ import logo from '../assets/images/financial-analytics-48x48.png';
 import ROUTES from '../routes';
 
 export const BUTTON_LABEL = {
-  login: 'Login',
-  logout: 'Logout',
+  login: 'Log In',
+  logout: 'Log Out',
 };
 export const FOOTER_INFO = {
   creatorName: 'Yervand Stepanyan',
@@ -17,15 +17,16 @@ export const IMAGE = {
   },
   login: {
     src: login,
-    title: 'Login image',
+    title: 'Log in image',
   },
 };
 export const LOGIN_SECTION = {
-  title: 'Log In',
   placeholder: {
     username: 'example@mail.com',
     password: 'Password',
   },
+  signupLabel: 'Create an account',
+  title: 'Log In',
 };
 export const MENU_ITEMS = [
   {

@@ -13,6 +13,7 @@ import ProtectedRoute from '../../components/ProtectedRoute';
 function Main() {
   const classes = useStyles();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [route, setRoute] = useState(ROUTES.home);
 
   const handleLogin = () => {
     setIsAuthenticated(true);
@@ -22,14 +23,29 @@ function Main() {
     setIsAuthenticated(false);
   };
 
+  const handleRoute = routeTo => {
+    setRoute(routeTo);
+  };
+
   return (
     <div className={classes.mainContainer}>
       <Router>
-        <Header handleLogout={handleLogout} isAuthenticated={isAuthenticated} />
+        <Header
+          handleLogout={handleLogout}
+          handleRoute={handleRoute}
+          isAuthenticated={isAuthenticated}
+          route={route}
+        />
         <Switch>
-          <Route exact path={ROUTES.home} component={Home} />
+          <Route exact path={ROUTES.home}>
+            <Home
+              handleLogout={handleLogout}
+              handleRoute={handleRoute}
+              isAuthenticated={isAuthenticated}
+            />
+          </Route>
           <Route path={ROUTES.login}>
-            <Login handleLogin={handleLogin} />
+            <Login handleLogin={handleLogin} handleRoute={handleRoute} />
           </Route>
           <ProtectedRoute
             component={Dashboard}
@@ -37,7 +53,7 @@ function Main() {
             path={ROUTES.dashboard}
           />
         </Switch>
-        <Footer />
+        <Footer route={route} />
       </Router>
     </div>
   );

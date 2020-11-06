@@ -1,6 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles(theme => ({
+  noFooter: {
+    display: 'none',
+  },
   footerContainer: {
     backgroundColor: theme.color.titleTextColor,
     boxSizing: 'border-box',

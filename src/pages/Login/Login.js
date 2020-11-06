@@ -17,7 +17,7 @@ import { BUTTON_LABEL, IMAGE, LOGIN_SECTION } from '../../globals/constants';
 import ROUTES from '../../routes';
 import { useStyles } from './Login.style';
 
-function Login({ handleLogin }) {
+function Login({ handleLogin, handleRoute }) {
   const classes = useStyles();
   const history = useHistory();
   const { state } = useLocation();
@@ -42,9 +42,13 @@ function Login({ handleLogin }) {
   };
 
   const login = () => {
+    const route = state?.from || ROUTES.home;
+
     handleLogin();
 
-    history.push(state?.from || ROUTES.home);
+    history.push(route);
+
+    handleRoute(route);
   };
 
   return (
@@ -99,10 +103,15 @@ function Login({ handleLogin }) {
                 value={password}
               />
             </div>
-            <div>
+            <div className={classes.buttonWrapper}>
               <Button color="primary" onClick={login} variant="contained">
                 {BUTTON_LABEL.login}
               </Button>
+            </div>
+            <div className={classes.signupWrapper}>
+              <Typography variant="subtitle1">
+                {LOGIN_SECTION.signupLabel}
+              </Typography>
             </div>
           </Paper>
         </div>
@@ -122,6 +131,7 @@ function Login({ handleLogin }) {
 
 Login.propTypes = {
   handleLogin: PropTypes.func.isRequired,
+  handleRoute: PropTypes.func.isRequired,
 };
 
 export default Login;

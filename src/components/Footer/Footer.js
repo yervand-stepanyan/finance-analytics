@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -9,9 +9,15 @@ import { useStyles } from './Footer.style';
 
 function Footer() {
   const classes = useStyles();
+  const { pathname } = useLocation();
+  const isRoute = pathname === ROUTES.login || pathname === ROUTES.signup;
 
   return (
-    <footer className={classes.footerContainer}>
+    <footer
+      className={`${classes.footerContainer} ${
+        isRoute ? classes.noFooter : ''
+      }`}
+    >
       <div className={classes.contentContainer}>
         <div className={classes.logoAndCreatorWrapper}>
           <Link className={classes.link} to={ROUTES.home}>

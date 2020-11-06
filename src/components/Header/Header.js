@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -16,11 +16,17 @@ import {
 import ROUTES from '../../routes';
 import { useStyles } from './Header.style';
 
-function Header({ handleLogout, isAuthenticated }) {
+function Header({ handleLogout, handleRoute, isAuthenticated }) {
   const classes = useStyles();
+  const { pathname } = useLocation();
+  const isRoute = pathname === ROUTES.login || pathname === ROUTES.signup;
+
+  const handleLoginClick = routeTo => {
+    handleRoute(routeTo);
+  };
 
   return (
-    <div>
+    <div className={isRoute ? classes.noHeader : ''}>
       <AppBar className={classes.headerContainer} position="static">
         <Toolbar>
           <div className={classes.headerContentWrapper}>
@@ -64,7 +70,11 @@ function Header({ handleLogout, isAuthenticated }) {
                   </Link>
                 ) : (
                   <Link className={classes.link} to={ROUTES.login}>
-                    <Button color="primary" variant="contained">
+                    <Button
+                      color="primary"
+                      onClick={() => handleLoginClick(ROUTES.login)}
+                      variant="contained"
+                    >
                       {BUTTON_LABEL.login}
                     </Button>
                   </Link>
@@ -80,6 +90,7 @@ function Header({ handleLogout, isAuthenticated }) {
 
 Header.propTypes = {
   handleLogout: PropTypes.func.isRequired,
+  handleRoute: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
