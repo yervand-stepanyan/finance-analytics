@@ -2,7 +2,7 @@ import { createMuiTheme } from '@material-ui/core';
 
 const LOGO_SIZE = 48;
 const MAIN_SPACING_VALUE = 16;
-const HEADER_BUTTON_SIZE = 96;
+const HEADER_BUTTON_SIZE = 98;
 const LOGIN_BUTTON_SIZE = 90;
 const SIGNUP_BUTTON_SIZE = 94;
 

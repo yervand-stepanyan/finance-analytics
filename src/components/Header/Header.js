@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
@@ -57,9 +59,9 @@ function Header({ handleLogout, handleRoute, isAuthenticated }) {
                   </Link>
                 </div>
               ))}
-              <div className={classes.buttonGroupWrapper}>
-                <div className={classes.buttonWrapper}>
-                  {isAuthenticated ? (
+              <div>
+                {isAuthenticated ? (
+                  <div className={classes.buttonWrapper}>
                     <Link className={classes.link} to={ROUTES.home}>
                       <Button
                         color="primary"
@@ -69,29 +71,38 @@ function Header({ handleLogout, handleRoute, isAuthenticated }) {
                         {BUTTON_LABEL.logout}
                       </Button>
                     </Link>
-                  ) : (
-                    <Link className={classes.link} to={ROUTES.login}>
-                      <Button
-                        color="primary"
-                        onClick={() => handleButtonClick(ROUTES.login)}
-                      >
-                        {BUTTON_LABEL.login}
-                      </Button>
-                    </Link>
-                  )}
-                </div>
-                <div className={classes.buttonWrapper}>
-                  <Link className={classes.link} to={ROUTES.signup}>
-                    <Button
-                      color="primary"
-                      onClick={() => handleButtonClick(ROUTES.signup)}
-                      variant="contained"
-                    >
-                      {BUTTON_LABEL.signup}
-                    </Button>
-                  </Link>
-                </div>
+                  </div>
+                ) : (
+                  <div className={classes.buttonGroupWrapper}>
+                    <div className={classes.buttonWrapper}>
+                      <Link className={classes.link} to={ROUTES.login}>
+                        <Button
+                          color="primary"
+                          onClick={() => handleButtonClick(ROUTES.login)}
+                        >
+                          {BUTTON_LABEL.login}
+                        </Button>
+                      </Link>
+                    </div>
+                    <div className={classes.buttonWrapper}>
+                      <Link className={classes.link} to={ROUTES.signup}>
+                        <Button
+                          color="primary"
+                          onClick={() => handleButtonClick(ROUTES.signup)}
+                          variant="contained"
+                        >
+                          {BUTTON_LABEL.signup}
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                )}
               </div>
+            </div>
+            <div className={classes.menuButtonWrapper}>
+              <IconButton>
+                <MenuIcon />
+              </IconButton>
             </div>
           </div>
         </Toolbar>

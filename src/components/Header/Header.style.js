@@ -32,8 +32,11 @@ export const useStyles = makeStyles(theme => ({
     marginLeft: theme.customSpacing.base,
   },
   menuWrapper: {
-    display: 'flex',
-    alignItems: 'center',
+    display: 'none',
+    '@media only screen and (min-width: 600px)': {
+      display: 'flex',
+      alignItems: 'center',
+    },
   },
   menuItem: {
     marginRight: theme.customSpacing.base,
@@ -51,5 +54,10 @@ export const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     width: theme.size.headerButton,
+  },
+  menuButtonWrapper: {
+    '@media only screen and (min-width: 600px)': {
+      display: 'none',
+    },
   },
 }));
