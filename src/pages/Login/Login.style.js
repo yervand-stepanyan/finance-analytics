@@ -6,10 +6,11 @@ export const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     boxSizing: 'border-box',
     minHeight: 'inherit',
-    padding: `0 ${theme.customSpacing.base}`,
+    padding: theme.customSpacing.base,
   },
   contentWrapper: {
     display: 'flex',
+    alignItems: 'center',
     flexDirection: 'column',
     minHeight: '65vh',
     width: '100%',
@@ -26,12 +27,16 @@ export const useStyles = makeStyles(theme => ({
   },
   paper: {
     display: 'flex',
+    alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'center',
     boxSizing: ' border-box',
     minHeight: 'inherit',
     padding: `${theme.customSpacing.large}`,
     '@media only screen and (min-width: 600px)': {
+      alignItems: 'inherit',
+    },
+    '@media only screen and (min-width: 992px)': {
       padding: `${theme.customSpacing.large} ${theme.customSpacing.xxLarge}`,
     },
   },
@@ -40,12 +45,18 @@ export const useStyles = makeStyles(theme => ({
   },
   usernameWrapper: {
     marginBottom: theme.customSpacing.midLarge,
+    width: '100%',
   },
   passwordWrapper: {
     marginBottom: theme.customSpacing.large,
+    width: '100%',
   },
   buttonWrapper: {
     marginBottom: theme.customSpacing.large,
+    width: '100%',
+    '@media only screen and (min-width: 600px)': {
+      width: '90px',
+    },
   },
   signupWrapper: {
     display: 'flex',

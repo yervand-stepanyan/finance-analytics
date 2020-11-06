@@ -104,7 +104,12 @@ function Login({ handleLogin, handleRoute }) {
               />
             </div>
             <div className={classes.buttonWrapper}>
-              <Button color="primary" onClick={login} variant="contained">
+              <Button
+                color="primary"
+                fullWidth
+                onClick={login}
+                variant="contained"
+              >
                 {BUTTON_LABEL.login}
               </Button>
             </div>
