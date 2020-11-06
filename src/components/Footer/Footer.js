@@ -13,6 +13,10 @@ function Footer({ handleMenu }) {
   const { pathname } = useLocation();
   const isRoute = pathname === ROUTES.login || pathname === ROUTES.signup;
 
+  const handleHome = () => {
+    handleMenu(false);
+  };
+
   return (
     <footer
       className={`${classes.footerContainer} ${
@@ -21,11 +25,7 @@ function Footer({ handleMenu }) {
     >
       <div className={classes.contentContainer}>
         <div className={classes.logoAndCreatorWrapper}>
-          <Link
-            className={classes.link}
-            onClick={() => handleMenu()}
-            to={ROUTES.home}
-          >
+          <Link className={classes.link} onClick={handleHome} to={ROUTES.home}>
             <div className={classes.logoAndTitleWrapper}>
               <div className={classes.logoWrapper}>
                 <img
