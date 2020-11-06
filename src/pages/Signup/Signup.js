@@ -13,11 +13,11 @@ import Typography from '@material-ui/core/Typography';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-import { BUTTON_LABEL, IMAGE, LOGIN_SECTION } from '../../globals/constants';
+import { BUTTON_LABEL, IMAGE, SIGNUP_SECTION } from '../../globals/constants';
 import ROUTES from '../../routes';
-import { useStyles } from './Login.style';
+import { useStyles } from './Signup.style';
 
-function Login({ handleLogin, handleRoute }) {
+function Signup({ handleRoute, handleSingUp }) {
   const classes = useStyles();
   const history = useHistory();
   const { state } = useLocation();
@@ -41,10 +41,10 @@ function Login({ handleLogin, handleRoute }) {
     event.preventDefault();
   };
 
-  const login = () => {
+  const signup = () => {
     const route = state?.from || ROUTES.home;
 
-    handleLogin(username, password);
+    handleSingUp(username, password);
 
     history.push(route);
 
@@ -54,18 +54,18 @@ function Login({ handleLogin, handleRoute }) {
   const handleSubmitOnEnter = event => {
     if (event.key === 'Enter') {
       if (username && password) {
-        login();
+        signup();
       }
     }
   };
 
   return (
-    <div className={classes.loginContainer}>
+    <div className={classes.signupContainer}>
       <div className={classes.contentWrapper}>
         <div className={classes.inputSectionWrapper}>
           <Paper className={classes.paper} square>
             <div className={classes.titleWrapper}>
-              <Typography variant="h4">{LOGIN_SECTION.title}</Typography>
+              <Typography variant="h4">{SIGNUP_SECTION.title}</Typography>
             </div>
             <div className={classes.usernameWrapper}>
               <TextField
@@ -80,7 +80,7 @@ function Login({ handleLogin, handleRoute }) {
                 }}
                 onChange={e => handleUsernameChange(e)}
                 onKeyDown={e => handleSubmitOnEnter(e)}
-                placeholder={LOGIN_SECTION.placeholder.username}
+                placeholder={SIGNUP_SECTION.placeholder.username}
                 value={username}
               />
             </div>
@@ -108,7 +108,7 @@ function Login({ handleLogin, handleRoute }) {
                 }}
                 onChange={e => handlePasswordChange(e)}
                 onKeyDown={e => handleSubmitOnEnter(e)}
-                placeholder={LOGIN_SECTION.placeholder.password}
+                placeholder={SIGNUP_SECTION.placeholder.password}
                 type={showPassword ? 'text' : 'password'}
                 value={password}
               />
@@ -118,16 +118,16 @@ function Login({ handleLogin, handleRoute }) {
                 color="primary"
                 disabled={!username || !password}
                 fullWidth
-                onClick={login}
+                onClick={signup}
                 variant="contained"
               >
-                {BUTTON_LABEL.login}
+                {BUTTON_LABEL.signup}
               </Button>
             </div>
             <div className={classes.signupWrapper}>
-              <Link to={ROUTES.signup}>
+              <Link to={ROUTES.login}>
                 <Typography variant="subtitle1">
-                  {LOGIN_SECTION.signupLabel}
+                  {SIGNUP_SECTION.loginLabel}
                 </Typography>
               </Link>
             </div>
@@ -136,9 +136,9 @@ function Login({ handleLogin, handleRoute }) {
         <div className={classes.imageSectionWrapper}>
           <div className={classes.imageWrapper}>
             <img
-              alt={IMAGE.login.title}
+              alt={IMAGE.signup.title}
               className={classes.image}
-              src={IMAGE.login.src}
+              src={IMAGE.signup.src}
             />
           </div>
         </div>
@@ -147,9 +147,9 @@ function Login({ handleLogin, handleRoute }) {
   );
 }
 
-Login.propTypes = {
-  handleLogin: PropTypes.func.isRequired,
+Signup.propTypes = {
   handleRoute: PropTypes.func.isRequired,
+  handleSingUp: PropTypes.func.isRequired,
 };
 
-export default Login;
+export default Signup;
