@@ -37,10 +37,6 @@ function Login({ handleLogin, handleRoute }) {
     setShowPassword(!showPassword);
   };
 
-  const handleMouseDownPassword = event => {
-    event.preventDefault();
-  };
-
   const login = () => {
     const route = state?.from || ROUTES.home;
 
@@ -99,7 +95,6 @@ function Login({ handleLogin, handleRoute }) {
                       <IconButton
                         aria-label="toggle password visibility"
                         onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
                       >
                         {showPassword ? <Visibility /> : <VisibilityOff />}
                       </IconButton>
