@@ -35,7 +35,7 @@ export const useStyles = makeStyles(theme => ({
   },
   logoWrapper: {
     display: 'flex',
-    width: theme.logoSize,
+    width: theme.size.logo,
   },
   logoImage: {
     width: 'inherit',

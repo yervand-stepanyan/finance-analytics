@@ -2,6 +2,9 @@ import { createMuiTheme } from '@material-ui/core';
 
 const LOGO_SIZE = 48;
 const MAIN_SPACING_VALUE = 16;
+const HEADER_BUTTON_SIZE = 96;
+const LOGIN_BUTTON_SIZE = 90;
+const SIGNUP_BUTTON_SIZE = 94;
 
 const headerBackgroundColor = '#ffffff';
 const mainBodyColor = '#F5F7F9';
@@ -23,5 +26,10 @@ export const theme = createMuiTheme({
     xLarge: `${MAIN_SPACING_VALUE * 3}px`,
     xxLarge: `${MAIN_SPACING_VALUE * 4}px`,
   },
-  logoSize: `${LOGO_SIZE}px`,
+  size: {
+    headerButton: `${HEADER_BUTTON_SIZE}px`,
+    loginButton: `${LOGIN_BUTTON_SIZE}px`,
+    logo: `${LOGO_SIZE}px`,
+    signupButton: `${SIGNUP_BUTTON_SIZE}px`,
+  },
 });

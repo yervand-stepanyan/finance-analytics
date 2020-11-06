@@ -55,7 +55,7 @@ export const useStyles = makeStyles(theme => ({
     marginBottom: theme.customSpacing.large,
     width: '100%',
     '@media only screen and (min-width: 600px)': {
-      width: '94px',
+      width: theme.size.signupButton,
     },
   },
   signupWrapper: {

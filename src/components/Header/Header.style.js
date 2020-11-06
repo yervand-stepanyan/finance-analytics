@@ -22,7 +22,7 @@ export const useStyles = makeStyles(theme => ({
   },
   logoWrapper: {
     display: 'flex',
-    width: theme.logoSize,
+    width: theme.size.logo,
   },
   logoImage: {
     width: 'inherit',
@@ -50,6 +50,6 @@ export const useStyles = makeStyles(theme => ({
   buttonWrapper: {
     display: 'flex',
     justifyContent: 'center',
-    width: '96px',
+    width: theme.size.headerButton,
   },
 }));
