@@ -42,9 +42,10 @@ function Signup({ handleRoute, handleSingUp }) {
   };
 
   const signup = () => {
+    const user = { username, password };
     const route = state?.from || ROUTES.home;
 
-    handleSingUp(username, password);
+    handleSingUp(user);
 
     history.push(route);
 

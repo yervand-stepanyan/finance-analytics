@@ -38,9 +38,10 @@ function Login({ handleLogin, handleRoute }) {
   };
 
   const login = () => {
+    const user = { username, password };
     const route = state?.from || ROUTES.home;
 
-    handleLogin(username, password);
+    handleLogin(user);
 
     history.push(route);
 
