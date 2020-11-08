@@ -15,9 +15,9 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 import { BUTTON_LABEL, IMAGE, SIGN_IN_SECTION } from '../../globals/constants';
 import ROUTES from '../../routes';
-import { useStyles } from './Login.style';
+import { useStyles } from './Signin.style';
 
-function Login({ handleRoute, handleSignIn }) {
+function Signin({ handleRoute, handleSignIn }) {
   const classes = useStyles();
   const history = useHistory();
   const { state } = useLocation();
@@ -150,9 +150,9 @@ function Login({ handleRoute, handleSignIn }) {
   );
 }
 
-Login.propTypes = {
+Signin.propTypes = {
   handleRoute: PropTypes.func.isRequired,
   handleSignIn: PropTypes.func.isRequired,
 };
 
-export default Login;
+export default Signin;
