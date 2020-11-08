@@ -55,19 +55,9 @@ function MenuSection({
                 <Button
                   color="primary"
                   onClick={() => handleButtonClick(ROUTES.signin)}
-                >
-                  {BUTTON_LABEL.signIn}
-                </Button>
-              </Link>
-            </div>
-            <div className={classes.buttonWrapper}>
-              <Link className={classes.link} to={ROUTES.signup}>
-                <Button
-                  color="primary"
-                  onClick={() => handleButtonClick(ROUTES.signup)}
                   variant="contained"
                 >
-                  {BUTTON_LABEL.signUp}
+                  {BUTTON_LABEL.signIn}
                 </Button>
               </Link>
             </div>
