@@ -44,19 +44,19 @@ function MenuSection({
           <div className={classes.buttonWrapper}>
             <Link className={classes.link} to={ROUTES.home}>
               <Button color="primary" onClick={logout} variant="contained">
-                {BUTTON_LABEL.logout}
+                {BUTTON_LABEL.signOut}
               </Button>
             </Link>
           </div>
         ) : (
           <div className={classes.buttonGroupWrapper}>
             <div className={classes.buttonWrapper}>
-              <Link className={classes.link} to={ROUTES.login}>
+              <Link className={classes.link} to={ROUTES.signin}>
                 <Button
                   color="primary"
-                  onClick={() => handleButtonClick(ROUTES.login)}
+                  onClick={() => handleButtonClick(ROUTES.signin)}
                 >
-                  {BUTTON_LABEL.login}
+                  {BUTTON_LABEL.signIn}
                 </Button>
               </Link>
             </div>
@@ -67,7 +67,7 @@ function MenuSection({
                   onClick={() => handleButtonClick(ROUTES.signup)}
                   variant="contained"
                 >
-                  {BUTTON_LABEL.signup}
+                  {BUTTON_LABEL.signUp}
                 </Button>
               </Link>
             </div>

@@ -1,7 +1,7 @@
 const ROUTES = {
   dashboard: '/dashboard',
   home: '/',
-  login: '/login',
+  signin: '/signin',
   signup: '/signup',
 };
 

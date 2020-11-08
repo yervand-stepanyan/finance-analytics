@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-import { BUTTON_LABEL, IMAGE, LOGIN_SECTION } from '../../globals/constants';
+import { BUTTON_LABEL, IMAGE, SIGN_IN_SECTION } from '../../globals/constants';
 import ROUTES from '../../routes';
 import { useStyles } from './Login.style';
 
@@ -62,7 +62,7 @@ function Login({ handleLogin, handleRoute }) {
         <div className={classes.inputSectionWrapper}>
           <Paper className={classes.paper} square>
             <div className={classes.titleWrapper}>
-              <Typography variant="h4">{LOGIN_SECTION.title}</Typography>
+              <Typography variant="h4">{SIGN_IN_SECTION.title}</Typography>
             </div>
             <div className={classes.usernameWrapper}>
               <TextField
@@ -77,7 +77,7 @@ function Login({ handleLogin, handleRoute }) {
                 }}
                 onChange={e => handleUsernameChange(e)}
                 onKeyDown={e => handleSubmitOnEnter(e)}
-                placeholder={LOGIN_SECTION.placeholder.username}
+                placeholder={SIGN_IN_SECTION.placeholder.username}
                 value={username}
               />
             </div>
@@ -104,7 +104,7 @@ function Login({ handleLogin, handleRoute }) {
                 }}
                 onChange={e => handlePasswordChange(e)}
                 onKeyDown={e => handleSubmitOnEnter(e)}
-                placeholder={LOGIN_SECTION.placeholder.password}
+                placeholder={SIGN_IN_SECTION.placeholder.password}
                 type={showPassword ? 'text' : 'password'}
                 value={password}
               />
@@ -117,24 +117,31 @@ function Login({ handleLogin, handleRoute }) {
                 onClick={login}
                 variant="contained"
               >
-                {BUTTON_LABEL.login}
+                {BUTTON_LABEL.signIn}
               </Button>
             </div>
             <div className={classes.signupWrapper}>
-              <Link to={ROUTES.signup}>
-                <Typography variant="subtitle1">
-                  {LOGIN_SECTION.signupLabel}
+              <div>
+                <Typography variant="subtitle2">
+                  {SIGN_IN_SECTION.signupLabel}
                 </Typography>
-              </Link>
+              </div>
+              <div className={classes.linkWrapper}>
+                <Link to={ROUTES.signup}>
+                  <Typography variant="subtitle1">
+                    {SIGN_IN_SECTION.signupLink}
+                  </Typography>
+                </Link>
+              </div>
             </div>
           </Paper>
         </div>
         <div className={classes.imageSectionWrapper}>
           <div className={classes.imageWrapper}>
             <img
-              alt={IMAGE.login.title}
+              alt={IMAGE.signIn.title}
               className={classes.image}
-              src={IMAGE.login.src}
+              src={IMAGE.signIn.src}
             />
           </div>
         </div>

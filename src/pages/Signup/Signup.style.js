@@ -60,7 +60,11 @@ export const useStyles = makeStyles(theme => ({
   },
   signupWrapper: {
     display: 'flex',
+    alignItems: 'center',
     justifyContent: 'center',
+  },
+  linkWrapper: {
+    marginLeft: theme.customSpacing.small,
   },
   imageSectionWrapper: {
     width: '100%',

@@ -23,7 +23,7 @@ function Header({
 }) {
   const classes = useStyles();
   const { pathname } = useLocation();
-  const isRoute = pathname === ROUTES.login || pathname === ROUTES.signup;
+  const isRoute = pathname === ROUTES.signin || pathname === ROUTES.signup;
 
   const handleButtonClick = routeTo => {
     handleRoute(routeTo);
