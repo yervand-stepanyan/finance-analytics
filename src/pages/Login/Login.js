@@ -17,7 +17,7 @@ import { BUTTON_LABEL, IMAGE, SIGN_IN_SECTION } from '../../globals/constants';
 import ROUTES from '../../routes';
 import { useStyles } from './Login.style';
 
-function Login({ handleLogin, handleRoute }) {
+function Login({ handleRoute, handleSignIn }) {
   const classes = useStyles();
   const history = useHistory();
   const { state } = useLocation();
@@ -37,11 +37,11 @@ function Login({ handleLogin, handleRoute }) {
     setShowPassword(!showPassword);
   };
 
-  const login = () => {
+  const signIn = () => {
     const user = { username, password };
     const route = state?.from || ROUTES.home;
 
-    handleLogin(user);
+    handleSignIn(user);
 
     history.push(route);
 
@@ -51,7 +51,7 @@ function Login({ handleLogin, handleRoute }) {
   const handleSubmitOnEnter = event => {
     if (event.key === 'Enter') {
       if (username && password) {
-        login();
+        signIn();
       }
     }
   };
@@ -114,7 +114,7 @@ function Login({ handleLogin, handleRoute }) {
                 color="primary"
                 disabled={!username || !password}
                 fullWidth
-                onClick={login}
+                onClick={signIn}
                 variant="contained"
               >
                 {BUTTON_LABEL.signIn}
@@ -151,8 +151,8 @@ function Login({ handleLogin, handleRoute }) {
 }
 
 Login.propTypes = {
-  handleLogin: PropTypes.func.isRequired,
   handleRoute: PropTypes.func.isRequired,
+  handleSignIn: PropTypes.func.isRequired,
 };
 
 export default Login;

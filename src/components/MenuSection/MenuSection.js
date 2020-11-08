@@ -12,14 +12,14 @@ import { useStyles } from './MenuSection.style';
 
 function MenuSection({
   handleButtonClick,
-  handleLogout,
   handleOpenMenu,
+  handleSignOut,
   isAuthenticated,
 }) {
   const classes = useStyles();
 
-  const logout = () => {
-    handleLogout();
+  const signOut = () => {
+    handleSignOut();
 
     handleOpenMenu();
   };
@@ -43,7 +43,7 @@ function MenuSection({
         {isAuthenticated ? (
           <div className={classes.buttonWrapper}>
             <Link className={classes.link} to={ROUTES.home}>
-              <Button color="primary" onClick={logout} variant="contained">
+              <Button color="primary" onClick={signOut} variant="contained">
                 {BUTTON_LABEL.signOut}
               </Button>
             </Link>
@@ -80,8 +80,8 @@ function MenuSection({
 
 MenuSection.propTypes = {
   handleButtonClick: PropTypes.func.isRequired,
-  handleLogout: PropTypes.func.isRequired,
   handleOpenMenu: PropTypes.func.isRequired,
+  handleSignOut: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
 };
 

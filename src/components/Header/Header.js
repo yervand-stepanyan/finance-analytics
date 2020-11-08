@@ -15,9 +15,9 @@ import ROUTES from '../../routes';
 import { useStyles } from './Header.style';
 
 function Header({
-  handleLogout,
   handleOpenMenu,
   handleRoute,
+  handleSignOut,
   isAuthenticated,
   isMenuOpen,
 }) {
@@ -61,8 +61,8 @@ function Header({
             <div className={classes.menuWrapper}>
               <MenuSection
                 handleButtonClick={handleButtonClick}
-                handleLogout={handleLogout}
                 handleOpenMenu={handleOpenMenu}
+                handleSignOut={handleSignOut}
                 isAuthenticated={isAuthenticated}
               />
             </div>
@@ -80,8 +80,8 @@ function Header({
                 <Paper className={classes.paper}>
                   <MenuSection
                     handleButtonClick={handleButtonClick}
-                    handleLogout={handleLogout}
                     handleOpenMenu={handleOpenMenu}
+                    handleSignOut={handleSignOut}
                     isAuthenticated={isAuthenticated}
                   />
                 </Paper>
@@ -95,9 +95,9 @@ function Header({
 }
 
 Header.propTypes = {
-  handleLogout: PropTypes.func.isRequired,
   handleOpenMenu: PropTypes.func.isRequired,
   handleRoute: PropTypes.func.isRequired,
+  handleSignOut: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   isMenuOpen: PropTypes.bool.isRequired,
 };
