@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -13,14 +13,21 @@ import Typography from '@material-ui/core/Typography';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-import { BUTTON_LABEL, IMAGE, SIGN_IN_SECTION } from '../../globals/constants';
+import API from '../../fetchAPI';
+import {
+  BUTTON_LABEL,
+  IMAGE,
+  LOADER,
+  SIGN_IN_SECTION,
+} from '../../globals/constants';
+import Loader from '../../components/Loader';
 import ROUTES from '../../routes';
 import { useStyles } from './Signin.style';
 
-function Signin({ handleRoute, handleSignIn }) {
+function Signin({ handleCurrentUser }) {
   const classes = useStyles();
   const history = useHistory();
-  const { state } = useLocation();
+  const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState('');
@@ -37,21 +44,33 @@ function Signin({ handleRoute, handleSignIn }) {
     setShowPassword(!showPassword);
   };
 
-  const signIn = () => {
-    const user = { username, password };
-    const route = state?.from || ROUTES.home;
+  const getUser = async () => {
+    try {
+      setLoading(true);
 
-    handleSignIn(user);
+      const redirectRoute = ROUTES.home;
+      const newUser = { username, password };
+      const response = await API.postToken(newUser);
+      const user = await API.getCurrentUser(response.accessToken);
 
-    history.push(route);
+      handleCurrentUser(user);
 
-    handleRoute(route);
+      history.push(redirectRoute);
+    } catch (e) {
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleSubmitOnEnter = event => {
+  const handleSignIn = async () => {
+    await getUser();
+  };
+
+  const handleSubmitOnEnter = async event => {
     if (event.key === 'Enter') {
       if (username && password) {
-        signIn();
+        await handleSignIn();
       }
     }
   };
@@ -112,13 +131,14 @@ function Signin({ handleRoute, handleSignIn }) {
             <div className={classes.buttonWrapper}>
               <Button
                 color="primary"
-                disabled={!username || !password}
+                disabled={loading || !username || !password}
                 fullWidth
-                onClick={signIn}
+                onClick={handleSignIn}
                 variant="contained"
               >
                 {BUTTON_LABEL.signIn}
               </Button>
+              {loading && <Loader type={LOADER.button.title} />}
             </div>
             <div className={classes.signupWrapper}>
               <div>
@@ -151,8 +171,7 @@ function Signin({ handleRoute, handleSignIn }) {
 }
 
 Signin.propTypes = {
-  handleRoute: PropTypes.func.isRequired,
-  handleSignIn: PropTypes.func.isRequired,
+  handleCurrentUser: PropTypes.func.isRequired,
 };
 
 export default Signin;
