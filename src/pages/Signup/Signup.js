@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Link, useHistory } from 'react-router-dom';
 
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
@@ -13,14 +12,21 @@ import Typography from '@material-ui/core/Typography';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-import { BUTTON_LABEL, IMAGE, SIGN_UP_SECTION } from '../../globals/constants';
+import API from '../../fetchAPI';
+import {
+  BUTTON_LABEL,
+  IMAGE,
+  LOADER,
+  SIGN_UP_SECTION,
+} from '../../globals/constants';
+import Loader from '../../components/Loader';
 import ROUTES from '../../routes';
 import { useStyles } from './Signup.style';
 
-function Signup({ handleRoute, handleSingUp }) {
+function Signup() {
   const classes = useStyles();
   const history = useHistory();
-  const { state } = useLocation();
+  const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState('');
@@ -37,25 +43,30 @@ function Signup({ handleRoute, handleSingUp }) {
     setShowPassword(!showPassword);
   };
 
-  const handleMouseDownPassword = event => {
-    event.preventDefault();
+  const postUser = async () => {
+    try {
+      setLoading(true);
+
+      const redirectRoute = ROUTES.home;
+      const newUser = { username, password };
+      await API.postUser(newUser);
+
+      history.push(redirectRoute);
+    } catch (e) {
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const signup = () => {
-    const user = { username, password };
-    const route = state?.from || ROUTES.home;
-
-    handleSingUp(user);
-
-    history.push(route);
-
-    handleRoute(route);
+  const handleSingUp = async () => {
+    await postUser();
   };
 
-  const handleSubmitOnEnter = event => {
+  const handleSubmitOnEnter = async event => {
     if (event.key === 'Enter') {
       if (username && password) {
-        signup();
+        await handleSingUp();
       }
     }
   };
@@ -100,7 +111,6 @@ function Signup({ handleRoute, handleSingUp }) {
                       <IconButton
                         aria-label="toggle password visibility"
                         onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
                       >
                         {showPassword ? <Visibility /> : <VisibilityOff />}
                       </IconButton>
@@ -117,13 +127,14 @@ function Signup({ handleRoute, handleSingUp }) {
             <div className={classes.buttonWrapper}>
               <Button
                 color="primary"
-                disabled={!username || !password}
+                disabled={loading || !username || !password}
                 fullWidth
-                onClick={signup}
+                onClick={handleSingUp}
                 variant="contained"
               >
                 {BUTTON_LABEL.signUp}
               </Button>
+              {loading && <Loader type={LOADER.button.title} />}
             </div>
             <div className={classes.signupWrapper}>
               <div>
@@ -154,10 +165,5 @@ function Signup({ handleRoute, handleSingUp }) {
     </div>
   );
 }
-
-Signup.propTypes = {
-  handleRoute: PropTypes.func.isRequired,
-  handleSingUp: PropTypes.func.isRequired,
-};
 
 export default Signup;

@@ -49,8 +49,8 @@ function Signin({ handleCurrentUser }) {
       setLoading(true);
 
       const redirectRoute = ROUTES.home;
-      const newUser = { username, password };
-      const response = await API.postToken(newUser);
+      const userToSignIn = { username, password };
+      const response = await API.postToken(userToSignIn);
       const user = await API.getCurrentUser(response.accessToken);
 
       handleCurrentUser(user);

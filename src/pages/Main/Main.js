@@ -1,59 +1,69 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import Dashboard from '../Dashboard';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Home from '../Home';
-import Login from '../Login';
-import Dashboard from '../Dashboard';
 import ROUTES from '../../routes';
+import ScrollToTop from '../../components/ScrollToTop';
+import Signin from '../Signin';
+import Signup from '../Signup';
+
 import { useStyles } from './Main.style';
 import ProtectedRoute from '../../components/ProtectedRoute';
 
 function Main() {
   const classes = useStyles();
+  const [currentUser, setCurrentUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [route, setRoute] = useState(ROUTES.home);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleLogin = () => {
-    setIsAuthenticated(true);
+  const handleOpenMenu = isOpen => {
+    if (isOpen !== undefined) {
+      setIsMenuOpen(isOpen);
+    } else {
+      setIsMenuOpen(!isMenuOpen);
+    }
   };
 
-  const handleLogout = () => {
+  const handleCurrentUser = user => {
+    setCurrentUser(user);
+  };
+
+  const handleSignOut = () => {
     setIsAuthenticated(false);
-  };
-
-  const handleRoute = routeTo => {
-    setRoute(routeTo);
   };
 
   return (
     <div className={classes.mainContainer}>
       <Router>
-        <Header
-          handleLogout={handleLogout}
-          handleRoute={handleRoute}
-          isAuthenticated={isAuthenticated}
-          route={route}
-        />
-        <Switch>
-          <Route exact path={ROUTES.home}>
-            <Home
-              handleLogout={handleLogout}
-              handleRoute={handleRoute}
-              isAuthenticated={isAuthenticated}
-            />
-          </Route>
-          <Route path={ROUTES.login}>
-            <Login handleLogin={handleLogin} handleRoute={handleRoute} />
-          </Route>
-          <ProtectedRoute
-            component={Dashboard}
+        <ScrollToTop>
+          <Header
+            currentUser={currentUser}
+            handleOpenMenu={handleOpenMenu}
+            handleSignOut={handleSignOut}
             isAuthenticated={isAuthenticated}
-            path={ROUTES.dashboard}
+            isMenuOpen={isMenuOpen}
           />
-        </Switch>
-        <Footer route={route} />
+          <Switch>
+            <Route exact path={ROUTES.home}>
+              <Home />
+            </Route>
+            <Route path={ROUTES.signin}>
+              <Signin handleCurrentUser={handleCurrentUser} />
+            </Route>
+            <Route path={ROUTES.signup}>
+              <Signup />
+            </Route>
+            <ProtectedRoute
+              component={Dashboard}
+              isAuthenticated={isAuthenticated}
+              path={ROUTES.dashboard}
+            />
+          </Switch>
+          <Footer handleOpenMenu={handleOpenMenu} />
+        </ScrollToTop>
       </Router>
     </div>
   );
