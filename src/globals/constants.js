@@ -26,6 +26,18 @@ export const IMAGE = {
     title: 'Sign Up image',
   },
 };
+export const LOADER = {
+  button: {
+    size: 24,
+    thickness: 8,
+    title: 'button',
+  },
+  page: {
+    size: 60,
+    thickness: 4,
+    title: 'page',
+  },
+};
 export const MENU_ITEMS = [
   {
     name: 'Dashboard',
