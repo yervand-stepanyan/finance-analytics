@@ -45,21 +45,14 @@ export const useStyles = makeStyles(theme => ({
   },
   menuPopup: {
     position: 'absolute',
+    marginLeft: theme.customSpacing.base,
     right: theme.customSpacing.base,
-    top: theme.size.headerHeight,
+    top: theme.size.headerHeightMobile,
     '@media only screen and (min-width: 600px)': {
       display: 'none',
     },
   },
-  hideMenuPopup: {
+  menuPopupHidden: {
     display: 'none',
-  },
-  paper: {
-    padding: theme.customSpacing.base,
-  },
-  menuPopupContentWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
   },
 }));

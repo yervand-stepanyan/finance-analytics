@@ -18,12 +18,21 @@ function Main() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
   const handleOpenMenu = isOpen => {
     if (isOpen !== undefined) {
       setIsMenuOpen(isOpen);
     } else {
       setIsMenuOpen(!isMenuOpen);
+    }
+  };
+
+  const handleOpenUserMenu = isOpen => {
+    if (isOpen !== undefined) {
+      setIsUserMenuOpen(isOpen);
+    } else {
+      setIsUserMenuOpen(!isUserMenuOpen);
     }
   };
 
@@ -42,9 +51,10 @@ function Main() {
           <Header
             currentUser={currentUser}
             handleOpenMenu={handleOpenMenu}
+            handleOpenUserMenu={handleOpenUserMenu}
             handleSignOut={handleSignOut}
-            isAuthenticated={isAuthenticated}
             isMenuOpen={isMenuOpen}
+            isUserMenuOpen={isUserMenuOpen}
           />
           <Switch>
             <Route exact path={ROUTES.home}>
@@ -62,7 +72,10 @@ function Main() {
               path={ROUTES.dashboard}
             />
           </Switch>
-          <Footer handleOpenMenu={handleOpenMenu} />
+          <Footer
+            handleOpenMenu={handleOpenMenu}
+            handleOpenUserMenu={handleOpenUserMenu}
+          />
         </ScrollToTop>
       </Router>
     </div>

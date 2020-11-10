@@ -5,34 +5,37 @@ import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
 import { IMAGE, PROJECT_TITLE } from '../../globals/constants';
-import MenuSection from '../MenuSection';
+import MenuSectionLargeScreen from '../MenuSectionLargeScreen';
+import MenuSectionMobile from '../MenuSectionMobile';
 import ROUTES from '../../routes';
 import { useStyles } from './Header.style';
 
 function Header({
+  currentUser,
   handleOpenMenu,
-  handleRoute,
+  handleOpenUserMenu,
   handleSignOut,
-  isAuthenticated,
   isMenuOpen,
+  isUserMenuOpen,
 }) {
   const classes = useStyles();
+  const username = currentUser?.username;
   const { pathname } = useLocation();
   const isRoute = pathname === ROUTES.signin || pathname === ROUTES.signup;
 
-  const handleButtonClick = routeTo => {
-    handleRoute(routeTo);
-
-    handleOpenMenu(false);
-  };
-
   const handleHome = () => {
     handleOpenMenu(false);
+    handleOpenUserMenu(false);
+  };
+
+  const signOut = () => {
+    handleSignOut();
+
+    handleOpenMenu();
   };
 
   return (
@@ -59,11 +62,13 @@ function Header({
               </div>
             </Link>
             <div className={classes.menuWrapper}>
-              <MenuSection
-                handleButtonClick={handleButtonClick}
+              <MenuSectionLargeScreen
                 handleOpenMenu={handleOpenMenu}
+                handleOpenUserMenu={handleOpenUserMenu}
                 handleSignOut={handleSignOut}
-                isAuthenticated={isAuthenticated}
+                isUserMenuOpen={isUserMenuOpen}
+                signOut={signOut}
+                username={username}
               />
             </div>
             <div className={classes.menuButtonWrapper}>
@@ -74,17 +79,14 @@ function Header({
               </div>
               <div
                 className={`${
-                  isMenuOpen ? classes.menuPopup : classes.hideMenuPopup
+                  isMenuOpen ? classes.menuPopup : classes.menuPopupHidden
                 }`}
               >
-                <Paper className={classes.paper}>
-                  <MenuSection
-                    handleButtonClick={handleButtonClick}
-                    handleOpenMenu={handleOpenMenu}
-                    handleSignOut={handleSignOut}
-                    isAuthenticated={isAuthenticated}
-                  />
-                </Paper>
+                <MenuSectionMobile
+                  username={username}
+                  handleOpenMenu={handleOpenMenu}
+                  signOut={signOut}
+                />
               </div>
             </div>
           </div>
@@ -95,11 +97,16 @@ function Header({
 }
 
 Header.propTypes = {
+  currentUser: PropTypes.object,
   handleOpenMenu: PropTypes.func.isRequired,
-  handleRoute: PropTypes.func.isRequired,
+  handleOpenUserMenu: PropTypes.func.isRequired,
   handleSignOut: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
   isMenuOpen: PropTypes.bool.isRequired,
+  isUserMenuOpen: PropTypes.bool.isRequired,
+};
+
+Header.defaultProps = {
+  currentUser: null,
 };
 
 export default Header;

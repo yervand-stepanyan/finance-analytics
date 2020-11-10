@@ -8,13 +8,14 @@ import { FOOTER_INFO, IMAGE, PROJECT_TITLE } from '../../globals/constants';
 import ROUTES from '../../routes';
 import { useStyles } from './Footer.style';
 
-function Footer({ handleOpenMenu }) {
+function Footer({ handleOpenMenu, handleOpenUserMenu }) {
   const classes = useStyles();
   const { pathname } = useLocation();
   const isRoute = pathname === ROUTES.signin || pathname === ROUTES.signup;
 
   const handleHome = () => {
     handleOpenMenu(false);
+    handleOpenUserMenu(false);
   };
 
   return (
@@ -55,6 +56,7 @@ function Footer({ handleOpenMenu }) {
 
 Footer.propTypes = {
   handleOpenMenu: PropTypes.func.isRequired,
+  handleOpenUserMenu: PropTypes.func.isRequired,
 };
 
 export default Footer;
