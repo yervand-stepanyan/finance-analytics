@@ -1,5 +1,7 @@
-import signIn from '../assets/images/signIn-1760x990.png';
 import logo from '../assets/images/financial-analytics-48x48.png';
+import signIn from '../assets/images/signIn-1760x990.png';
+import signInIcon from '../assets/icons/icon-signin-24x24.png';
+import signOutIcon from '../assets/icons/icon-signout-24x24.png';
 import signUp from '../assets/images/signup-1760x990.png';
 import ROUTES from '../routes';
 
@@ -11,6 +13,16 @@ export const BUTTON_LABEL = {
 export const FOOTER_INFO = {
   creatorName: 'Yervand Stepanyan',
   year: '2020',
+};
+export const ICON = {
+  signIn: {
+    src: signInIcon,
+    title: 'Sign in icon',
+  },
+  signOut: {
+    src: signOutIcon,
+    title: 'Sign out icon',
+  },
 };
 export const IMAGE = {
   logo: {
