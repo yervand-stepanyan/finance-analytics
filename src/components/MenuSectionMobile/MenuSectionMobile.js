@@ -12,7 +12,7 @@ import { useStyles } from './MenuSectionMobile.style';
 function MenuSectionMobile({
   handleOpenMobileMenu,
   isMobileMenuOpen,
-  signOut,
+  handleSignOut,
   username,
 }) {
   const classes = useStyles();
@@ -36,7 +36,7 @@ function MenuSectionMobile({
                 buttonLabel={BUTTON_LABEL.signOut}
                 imgAlt={ICON.signOut.title}
                 imgSrc={ICON.signOut.src}
-                onClickHandler={signOut}
+                onClickHandler={handleSignOut}
                 routeTo={ROUTES.home}
               />
             </div>
@@ -57,8 +57,8 @@ function MenuSectionMobile({
 
 MenuSectionMobile.propTypes = {
   handleOpenMobileMenu: PropTypes.func.isRequired,
+  handleSignOut: PropTypes.func.isRequired,
   isMobileMenuOpen: PropTypes.bool.isRequired,
-  signOut: PropTypes.func.isRequired,
   username: PropTypes.string,
 };
 

@@ -12,8 +12,8 @@ import { useStyles } from './MenuSectionLargeScreen.style';
 function MenuSectionLargeScreen({
   handleOpenMobileMenu,
   handleOpenUserMenu,
+  handleSignOut,
   isUserMenuOpen,
-  signOut,
   username,
 }) {
   const classes = useStyles();
@@ -49,7 +49,7 @@ function MenuSectionLargeScreen({
                 buttonLabel={BUTTON_LABEL.signOut}
                 imgAlt={ICON.signOut.title}
                 imgSrc={ICON.signOut.src}
-                onClickHandler={signOut}
+                onClickHandler={handleSignOut}
                 routeTo={ROUTES.home}
               />
             </Paper>
@@ -71,8 +71,8 @@ function MenuSectionLargeScreen({
 MenuSectionLargeScreen.propTypes = {
   handleOpenMobileMenu: PropTypes.func.isRequired,
   handleOpenUserMenu: PropTypes.func.isRequired,
+  handleSignOut: PropTypes.func.isRequired,
   isUserMenuOpen: PropTypes.bool.isRequired,
-  signOut: PropTypes.func.isRequired,
   username: PropTypes.string,
 };
 

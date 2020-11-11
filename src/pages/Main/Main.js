@@ -16,7 +16,6 @@ import ProtectedRoute from '../../components/ProtectedRoute';
 function Main() {
   const classes = useStyles();
   const [currentUser, setCurrentUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
@@ -36,12 +35,19 @@ function Main() {
     }
   };
 
+  const handleHomeClick = () => {
+    handleOpenMobileMenu(false);
+    handleOpenUserMenu(false);
+  };
+
   const handleCurrentUser = user => {
     setCurrentUser(user);
   };
 
   const handleSignOut = () => {
-    setIsAuthenticated(false);
+    setCurrentUser(null);
+    handleOpenUserMenu(false);
+    handleOpenMobileMenu(false);
   };
 
   return (
@@ -50,6 +56,7 @@ function Main() {
         <ScrollToTop>
           <Header
             currentUser={currentUser}
+            handleHomeClick={handleHomeClick}
             handleOpenMobileMenu={handleOpenMobileMenu}
             handleOpenUserMenu={handleOpenUserMenu}
             handleSignOut={handleSignOut}
@@ -68,7 +75,7 @@ function Main() {
             </Route>
             <ProtectedRoute
               component={Dashboard}
-              isAuthenticated={isAuthenticated}
+              currentUser={currentUser}
               path={ROUTES.dashboard}
             />
           </Switch>

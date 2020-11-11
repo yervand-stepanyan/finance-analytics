@@ -16,6 +16,7 @@ import { useStyles } from './Header.style';
 
 function Header({
   currentUser,
+  handleHomeClick,
   handleOpenMobileMenu,
   handleOpenUserMenu,
   handleSignOut,
@@ -27,17 +28,6 @@ function Header({
   const { pathname } = useLocation();
   const isRoute = pathname === ROUTES.signin || pathname === ROUTES.signup;
 
-  const handleHome = () => {
-    handleOpenMobileMenu(false);
-    handleOpenUserMenu(false);
-  };
-
-  const signOut = () => {
-    handleSignOut();
-
-    handleOpenMobileMenu();
-  };
-
   return (
     <div className={isRoute ? classes.noHeader : ''}>
       <AppBar className={classes.headerContainer} position="static">
@@ -45,7 +35,7 @@ function Header({
           <div className={classes.headerContentWrapper}>
             <Link
               className={classes.link}
-              onClick={handleHome}
+              onClick={handleHomeClick}
               to={ROUTES.home}
             >
               <div className={classes.logoAndTitleWrapper}>
@@ -65,9 +55,8 @@ function Header({
               <MenuSectionLargeScreen
                 handleOpenMobileMenu={handleOpenMobileMenu}
                 handleOpenUserMenu={handleOpenUserMenu}
-                handleSignOut={handleSignOut}
                 isUserMenuOpen={isUserMenuOpen}
-                signOut={signOut}
+                handleSignOut={handleSignOut}
                 username={username}
               />
             </div>
@@ -80,7 +69,7 @@ function Header({
               <MenuSectionMobile
                 handleOpenMobileMenu={handleOpenMobileMenu}
                 isMobileMenuOpen={isMobileMenuOpen}
-                signOut={signOut}
+                handleSignOut={handleSignOut}
                 username={username}
               />
             </div>
@@ -93,6 +82,7 @@ function Header({
 
 Header.propTypes = {
   currentUser: PropTypes.object,
+  handleHomeClick: PropTypes.func.isRequired,
   handleOpenMobileMenu: PropTypes.func.isRequired,
   handleOpenUserMenu: PropTypes.func.isRequired,
   handleSignOut: PropTypes.func.isRequired,

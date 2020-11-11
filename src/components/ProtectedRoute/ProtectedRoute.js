@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 import ROUTES from '../../routes';
 
 function ProtectedRoute({ component: Component, ...rest }) {
-  const { isAuthenticated } = rest;
+  const { currentUser } = rest;
 
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        isAuthenticated ? (
+        currentUser ? (
           <Component {...rest} />
         ) : (
           <Redirect
