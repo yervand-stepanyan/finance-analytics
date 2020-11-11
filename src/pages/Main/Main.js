@@ -77,6 +77,7 @@ function Main() {
               component={Dashboard}
               currentUser={currentUser}
               path={ROUTES.dashboard}
+              redirectTo={ROUTES.signin}
             />
           </Switch>
           <Footer

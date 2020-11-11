@@ -2,10 +2,8 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import ROUTES from '../../routes';
-
 function ProtectedRoute({ component: Component, ...rest }) {
-  const { currentUser } = rest;
+  const { currentUser, redirectTo } = rest;
 
   return (
     <Route
@@ -14,9 +12,7 @@ function ProtectedRoute({ component: Component, ...rest }) {
         currentUser ? (
           <Component {...rest} />
         ) : (
-          <Redirect
-            to={{ pathname: ROUTES.signin, state: { from: location } }}
-          />
+          <Redirect to={{ pathname: redirectTo, state: { from: location } }} />
         )}
     />
   );
