@@ -10,7 +10,7 @@ import UsernameBlock from '../UsernameBlock';
 import { useStyles } from './MenuSectionLargeScreen.style';
 
 function MenuSectionLargeScreen({
-  handleOpenMenu,
+  handleOpenMobileMenu,
   handleOpenUserMenu,
   isUserMenuOpen,
   signOut,
@@ -60,7 +60,7 @@ function MenuSectionLargeScreen({
           buttonLabel={BUTTON_LABEL.signIn}
           imgAlt={ICON.signIn.title}
           imgSrc={ICON.signIn.src}
-          onClickHandler={() => handleOpenMenu(false)}
+          onClickHandler={() => handleOpenMobileMenu(false)}
           routeTo={ROUTES.signin}
         />
       )}
@@ -69,7 +69,7 @@ function MenuSectionLargeScreen({
 }
 
 MenuSectionLargeScreen.propTypes = {
-  handleOpenMenu: PropTypes.func.isRequired,
+  handleOpenMobileMenu: PropTypes.func.isRequired,
   handleOpenUserMenu: PropTypes.func.isRequired,
   isUserMenuOpen: PropTypes.bool.isRequired,
   signOut: PropTypes.func.isRequired,

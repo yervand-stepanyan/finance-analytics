@@ -43,16 +43,4 @@ export const useStyles = makeStyles(theme => ({
       display: 'none',
     },
   },
-  menuPopup: {
-    position: 'absolute',
-    marginLeft: theme.customSpacing.base,
-    right: theme.customSpacing.base,
-    top: theme.size.headerHeightMobile,
-    '@media only screen and (min-width: 600px)': {
-      display: 'none',
-    },
-  },
-  menuPopupHidden: {
-    display: 'none',
-  },
 }));

@@ -16,10 +16,10 @@ import { useStyles } from './Header.style';
 
 function Header({
   currentUser,
-  handleOpenMenu,
+  handleOpenMobileMenu,
   handleOpenUserMenu,
   handleSignOut,
-  isMenuOpen,
+  isMobileMenuOpen,
   isUserMenuOpen,
 }) {
   const classes = useStyles();
@@ -28,14 +28,14 @@ function Header({
   const isRoute = pathname === ROUTES.signin || pathname === ROUTES.signup;
 
   const handleHome = () => {
-    handleOpenMenu(false);
+    handleOpenMobileMenu(false);
     handleOpenUserMenu(false);
   };
 
   const signOut = () => {
     handleSignOut();
 
-    handleOpenMenu();
+    handleOpenMobileMenu();
   };
 
   return (
@@ -63,7 +63,7 @@ function Header({
             </Link>
             <div className={classes.menuWrapper}>
               <MenuSectionLargeScreen
-                handleOpenMenu={handleOpenMenu}
+                handleOpenMobileMenu={handleOpenMobileMenu}
                 handleOpenUserMenu={handleOpenUserMenu}
                 handleSignOut={handleSignOut}
                 isUserMenuOpen={isUserMenuOpen}
@@ -73,21 +73,16 @@ function Header({
             </div>
             <div className={classes.menuButtonWrapper}>
               <div>
-                <IconButton onClick={() => handleOpenMenu()}>
+                <IconButton onClick={() => handleOpenMobileMenu()}>
                   <MenuIcon />
                 </IconButton>
               </div>
-              <div
-                className={`${
-                  isMenuOpen ? classes.menuPopup : classes.menuPopupHidden
-                }`}
-              >
-                <MenuSectionMobile
-                  username={username}
-                  handleOpenMenu={handleOpenMenu}
-                  signOut={signOut}
-                />
-              </div>
+              <MenuSectionMobile
+                handleOpenMobileMenu={handleOpenMobileMenu}
+                isMobileMenuOpen={isMobileMenuOpen}
+                signOut={signOut}
+                username={username}
+              />
             </div>
           </div>
         </Toolbar>
@@ -98,10 +93,10 @@ function Header({
 
 Header.propTypes = {
   currentUser: PropTypes.object,
-  handleOpenMenu: PropTypes.func.isRequired,
+  handleOpenMobileMenu: PropTypes.func.isRequired,
   handleOpenUserMenu: PropTypes.func.isRequired,
   handleSignOut: PropTypes.func.isRequired,
-  isMenuOpen: PropTypes.bool.isRequired,
+  isMobileMenuOpen: PropTypes.bool.isRequired,
   isUserMenuOpen: PropTypes.bool.isRequired,
 };
 

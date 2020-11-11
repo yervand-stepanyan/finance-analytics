@@ -9,41 +9,55 @@ import ROUTES from '../../routes';
 import UsernameBlock from '../UsernameBlock';
 import { useStyles } from './MenuSectionMobile.style';
 
-function MenuSectionMobile({ handleOpenMenu, signOut, username }) {
+function MenuSectionMobile({
+  handleOpenMobileMenu,
+  isMobileMenuOpen,
+  signOut,
+  username,
+}) {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.paper}>
-      {username ? (
-        <div>
-          <div className={classes.usernameWrapper}>
-            <UsernameBlock username={username} />
+    <div
+      className={`${
+        isMobileMenuOpen
+          ? classes.mobileMenuPopup
+          : classes.mobileMenuPopupHidden
+      }`}
+    >
+      <Paper className={classes.paper}>
+        {username ? (
+          <div>
+            <div className={classes.usernameWrapper}>
+              <UsernameBlock username={username} />
+            </div>
+            <div className={classes.signOutButtonWrapper}>
+              <MenuButton
+                buttonLabel={BUTTON_LABEL.signOut}
+                imgAlt={ICON.signOut.title}
+                imgSrc={ICON.signOut.src}
+                onClickHandler={signOut}
+                routeTo={ROUTES.home}
+              />
+            </div>
           </div>
-          <div className={classes.signOutButtonWrapper}>
-            <MenuButton
-              buttonLabel={BUTTON_LABEL.signOut}
-              imgAlt={ICON.signOut.title}
-              imgSrc={ICON.signOut.src}
-              onClickHandler={signOut}
-              routeTo={ROUTES.home}
-            />
-          </div>
-        </div>
-      ) : (
-        <MenuButton
-          buttonLabel={BUTTON_LABEL.signIn}
-          imgAlt={ICON.signIn.title}
-          imgSrc={ICON.signIn.src}
-          onClickHandler={() => handleOpenMenu(false)}
-          routeTo={ROUTES.signin}
-        />
-      )}
-    </Paper>
+        ) : (
+          <MenuButton
+            buttonLabel={BUTTON_LABEL.signIn}
+            imgAlt={ICON.signIn.title}
+            imgSrc={ICON.signIn.src}
+            onClickHandler={() => handleOpenMobileMenu(false)}
+            routeTo={ROUTES.signin}
+          />
+        )}
+      </Paper>
+    </div>
   );
 }
 
 MenuSectionMobile.propTypes = {
-  handleOpenMenu: PropTypes.func.isRequired,
+  handleOpenMobileMenu: PropTypes.func.isRequired,
+  isMobileMenuOpen: PropTypes.bool.isRequired,
   signOut: PropTypes.func.isRequired,
   username: PropTypes.string,
 };

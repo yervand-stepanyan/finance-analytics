@@ -17,14 +17,14 @@ function Main() {
   const classes = useStyles();
   const [currentUser, setCurrentUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
-  const handleOpenMenu = isOpen => {
+  const handleOpenMobileMenu = isOpen => {
     if (isOpen !== undefined) {
-      setIsMenuOpen(isOpen);
+      setIsMobileMenuOpen(isOpen);
     } else {
-      setIsMenuOpen(!isMenuOpen);
+      setIsMobileMenuOpen(!isMobileMenuOpen);
     }
   };
 
@@ -50,10 +50,10 @@ function Main() {
         <ScrollToTop>
           <Header
             currentUser={currentUser}
-            handleOpenMenu={handleOpenMenu}
+            handleOpenMobileMenu={handleOpenMobileMenu}
             handleOpenUserMenu={handleOpenUserMenu}
             handleSignOut={handleSignOut}
-            isMenuOpen={isMenuOpen}
+            isMobileMenuOpen={isMobileMenuOpen}
             isUserMenuOpen={isUserMenuOpen}
           />
           <Switch>
@@ -73,7 +73,7 @@ function Main() {
             />
           </Switch>
           <Footer
-            handleOpenMenu={handleOpenMenu}
+            handleOpenMobileMenu={handleOpenMobileMenu}
             handleOpenUserMenu={handleOpenUserMenu}
           />
         </ScrollToTop>
