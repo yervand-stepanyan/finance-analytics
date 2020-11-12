@@ -47,11 +47,11 @@ function Signup() {
     try {
       setLoading(true);
 
-      const redirectRoute = ROUTES.home;
+      const redirectTo = ROUTES.signin;
       const newUser = { username, password };
       await API.postUser(newUser);
 
-      history.push(redirectRoute);
+      history.push(redirectTo);
     } catch (e) {
       setLoading(false);
     } finally {
