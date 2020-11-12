@@ -12,7 +12,7 @@ async function requestToken({ url, method, body }) {
     }),
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
-      authorization: `Basic ${process.env.REACT_APP_CLIENT_SECRET}`,
+      authorization: `Basic ${process.env.REACT_APP_CLIENT}`,
     },
     method,
   };
