@@ -75,3 +75,12 @@ export const SIGN_UP_SECTION = {
   signInLink: 'Sign In now',
   title: 'Sign Up',
 };
+export const SNACKBAR = {
+  message: {
+    signUpSuccess: 'Signed up successfully! Sign In now to continue!',
+  },
+  props: {
+    anchorOrigin: { horizontal: 'right', vertical: 'top' },
+    autoHideDuration: 3000,
+  },
+};

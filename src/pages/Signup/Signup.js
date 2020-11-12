@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
@@ -18,12 +19,13 @@ import {
   IMAGE,
   LOADER,
   SIGN_UP_SECTION,
+  SNACKBAR,
 } from '../../globals/constants';
 import Loader from '../../components/Loader';
 import ROUTES from '../../routes';
 import { useStyles } from './Signup.style';
 
-function Signup() {
+function Signup({ handleOpenSnackbar, handleSnackbarContent }) {
   const classes = useStyles();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
@@ -51,11 +53,15 @@ function Signup() {
       const newUser = { username, password };
       await API.postUser(newUser);
 
+      handleSnackbarContent(true, SNACKBAR.message.signUpSuccess);
+
       history.push(redirectTo);
     } catch (e) {
       setLoading(false);
     } finally {
       setLoading(false);
+
+      handleOpenSnackbar();
     }
   };
 
@@ -165,5 +171,10 @@ function Signup() {
     </div>
   );
 }
+
+Signup.propTypes = {
+  handleOpenSnackbar: PropTypes.func.isRequired,
+  handleSnackbarContent: PropTypes.func.isRequired,
+};
 
 export default Signup;

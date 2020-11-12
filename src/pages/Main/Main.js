@@ -12,12 +12,16 @@ import Signup from '../Signup';
 
 import { useStyles } from './Main.style';
 import ProtectedRoute from '../../components/ProtectedRoute';
+import SnackbarComponent from '../../components/Snackbar/SnackbarComponent';
 
 function Main() {
   const classes = useStyles();
   const [currentUser, setCurrentUser] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSnackbarSuccess, setIsSnackbarSuccess] = useState(true);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarText, setSnackbarText] = useState('');
 
   const handleOpenMobileMenu = isOpen => {
     if (isOpen !== undefined) {
@@ -50,6 +54,24 @@ function Main() {
     handleOpenMobileMenu(false);
   };
 
+  const handleOpenSnackbar = () => {
+    setOpenSnackbar(true);
+  };
+
+  const handleSnackbarContent = (isSuccess, text) => {
+    setIsSnackbarSuccess(isSuccess);
+
+    setSnackbarText(text);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpenSnackbar(false);
+  };
+
   return (
     <div className={classes.mainContainer}>
       <Router>
@@ -71,7 +93,10 @@ function Main() {
               <Signin handleCurrentUser={handleCurrentUser} />
             </Route>
             <Route path={ROUTES.signup}>
-              <Signup />
+              <Signup
+                handleOpenSnackbar={handleOpenSnackbar}
+                handleSnackbarContent={handleSnackbarContent}
+              />
             </Route>
             <ProtectedRoute
               component={Dashboard}
@@ -86,6 +111,12 @@ function Main() {
           />
         </ScrollToTop>
       </Router>
+      <SnackbarComponent
+        isSnackbarSuccess={isSnackbarSuccess}
+        onClose={handleClose}
+        openSnackbar={openSnackbar}
+        snackbarText={snackbarText}
+      />
     </div>
   );
 }
