@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -22,11 +22,19 @@ function Header({
   handleSignOut,
   isMobileMenuOpen,
   isUserMenuOpen,
+  routeToRedirect,
 }) {
   const classes = useStyles();
   const username = currentUser?.username;
+  const history = useHistory();
   const { pathname } = useLocation();
   const isRoute = pathname === ROUTES.signin || pathname === ROUTES.signup;
+
+  const signOut = () => {
+    handleSignOut();
+
+    history.push(routeToRedirect);
+  };
 
   return (
     <div className={isRoute ? classes.noHeader : ''}>
@@ -56,7 +64,7 @@ function Header({
                 handleOpenMobileMenu={handleOpenMobileMenu}
                 handleOpenUserMenu={handleOpenUserMenu}
                 isUserMenuOpen={isUserMenuOpen}
-                handleSignOut={handleSignOut}
+                handleSignOut={signOut}
                 username={username}
               />
             </div>
@@ -69,7 +77,7 @@ function Header({
               <MenuSectionMobile
                 handleOpenMobileMenu={handleOpenMobileMenu}
                 isMobileMenuOpen={isMobileMenuOpen}
-                handleSignOut={handleSignOut}
+                handleSignOut={signOut}
                 username={username}
               />
             </div>
@@ -88,6 +96,7 @@ Header.propTypes = {
   handleSignOut: PropTypes.func.isRequired,
   isMobileMenuOpen: PropTypes.bool.isRequired,
   isUserMenuOpen: PropTypes.bool.isRequired,
+  routeToRedirect: PropTypes.string.isRequired,
 };
 
 Header.defaultProps = {

@@ -84,6 +84,7 @@ function Main() {
             handleSignOut={handleSignOut}
             isMobileMenuOpen={isMobileMenuOpen}
             isUserMenuOpen={isUserMenuOpen}
+            routeToRedirect={ROUTES.home}
           />
           <Switch>
             <Route exact path={ROUTES.home}>

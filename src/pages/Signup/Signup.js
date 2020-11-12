@@ -49,14 +49,14 @@ function Signup({ handleOpenSnackbar, handleSnackbarContent }) {
     try {
       setLoading(true);
 
-      const redirectTo = ROUTES.signin;
+      const routeToRedirect = ROUTES.signin;
       const newUser = { username, password };
       const response = await API.postUser(newUser);
 
       if (response.username) {
         handleSnackbarContent(true, SNACKBAR.message.signUpSuccess);
 
-        history.push(redirectTo);
+        history.push(routeToRedirect);
       } else {
         handleSnackbarContent(false, response.message);
       }
