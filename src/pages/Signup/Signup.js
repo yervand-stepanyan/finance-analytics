@@ -51,11 +51,15 @@ function Signup({ handleOpenSnackbar, handleSnackbarContent }) {
 
       const redirectTo = ROUTES.signin;
       const newUser = { username, password };
-      await API.postUser(newUser);
+      const response = await API.postUser(newUser);
 
-      handleSnackbarContent(true, SNACKBAR.message.signUpSuccess);
+      if (response.username) {
+        handleSnackbarContent(true, SNACKBAR.message.signUpSuccess);
 
-      history.push(redirectTo);
+        history.push(redirectTo);
+      } else {
+        handleSnackbarContent(false, response.message);
+      }
     } catch (e) {
       setLoading(false);
     } finally {
