@@ -48,14 +48,18 @@ function Signin({ handleCurrentUser }) {
     try {
       setLoading(true);
 
-      const redirectRoute = ROUTES.home;
+      const routeToRedirect = ROUTES.dashboard;
       const userToSignIn = { username, password };
       const response = await API.postToken(userToSignIn);
       const user = await API.getCurrentUser(response.accessToken);
 
-      handleCurrentUser(user);
+      if (user.username) {
+        handleCurrentUser(user);
 
-      history.push(redirectRoute);
+        setTimeout(() => {
+          history.push(routeToRedirect);
+        });
+      }
     } catch (e) {
       setLoading(false);
     } finally {
