@@ -10,6 +10,12 @@ export const BUTTON_LABEL = {
   signOut: 'Sign Out',
   signUp: 'Sign Up',
 };
+export const FIELD_LIST = [
+  {
+    name: 'Finance',
+    checked: true,
+  },
+];
 export const FOOTER_INFO = {
   creatorName: 'Yervand Stepanyan',
   year: '2020',
