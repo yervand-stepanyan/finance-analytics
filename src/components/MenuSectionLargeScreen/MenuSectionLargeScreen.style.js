@@ -11,6 +11,7 @@ export const useStyles = makeStyles(theme => ({
   },
   usernameBlockWrapper: {
     cursor: 'pointer',
+    outline: 'none',
   },
   usernameClickable: {
     cursor: 'pointer',
