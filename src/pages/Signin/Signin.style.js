@@ -56,7 +56,7 @@ export const useStyles = makeStyles(theme => ({
     position: 'relative',
     width: '100%',
     '@media only screen and (min-width: 600px)': {
-      width: theme.size.loginButton,
+      width: theme.size.signinButton,
     },
   },
   signupWrapper: {
