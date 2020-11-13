@@ -37,8 +37,8 @@ function Header({
   };
 
   return (
-    <div className={isRoute ? classes.noHeader : ''}>
-      <AppBar className={classes.headerContainer} position="static">
+    <div className={isRoute ? classes.noHeader : classes.headerContainer}>
+      <AppBar className={classes.appbar} position="static">
         <Toolbar>
           <div className={classes.headerContentWrapper}>
             <Link

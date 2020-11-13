@@ -1,10 +1,13 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles(theme => ({
+  headerContainer: {
+    position: 'relative',
+  },
   noHeader: {
     display: 'none',
   },
-  headerContainer: {
+  appbar: {
     backgroundColor: theme.color.headerBackgroundColor,
   },
   headerContentWrapper: {
