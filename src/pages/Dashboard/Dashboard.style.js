@@ -27,7 +27,7 @@ export const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     flexDirection: 'column',
     cursor: 'pointer',
-    height: theme.size.fieldItemHeight,
+    height: theme.size.fieldItemFullSize,
     outline: 'none',
     '@media only screen and (min-width: 600px)': {
       flexDirection: 'row',
