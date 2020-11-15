@@ -36,11 +36,12 @@ export const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     flexDirection: 'column',
     cursor: 'pointer',
-    height: theme.size.fieldItemFullSize,
+    height: 'auto',
     margin: `0 ${theme.customSpacing.small}`,
     outline: 'none',
     '@media only screen and (min-width: 600px)': {
       flexDirection: 'row',
+      height: theme.size.fieldItemFullSize,
       margin: `0 0 ${theme.customSpacing.small} 0`,
     },
   },
