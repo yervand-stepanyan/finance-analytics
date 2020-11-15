@@ -11,15 +11,24 @@ export const useStyles = makeStyles(theme => ({
   },
   fieldNavWrapper: {
     display: 'flex',
-    justifyContent: 'space-between',
     backgroundColor: theme.color.headerBackgroundColor,
-    boxSizing: 'border-box',
     padding: `${theme.customSpacing.small} ${theme.customSpacing.base}`,
+    'overflow-x': 'auto',
     '@media only screen and (min-width: 600px)': {
       flexDirection: 'column',
       justifyContent: 'flex-start',
       minWidth: theme.size.fieldNavigationWidth,
       padding: `${theme.customSpacing.base} ${theme.customSpacing.base} ${theme.customSpacing.small} 0`,
+    },
+  },
+  outerItemWrapper: {
+    display: 'flex',
+    'overflow-x': 'auto',
+  },
+  mainItemWrapper: {
+    display: 'flex',
+    '@media only screen and (min-width: 600px)': {
+      flexDirection: 'column',
     },
   },
   itemWrapper: {
@@ -28,10 +37,11 @@ export const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     cursor: 'pointer',
     height: theme.size.fieldItemFullSize,
+    margin: `0 ${theme.customSpacing.small}`,
     outline: 'none',
     '@media only screen and (min-width: 600px)': {
       flexDirection: 'row',
-      marginBottom: theme.customSpacing.small,
+      margin: `0 0 ${theme.customSpacing.small} 0`,
     },
   },
   checkedItemWrapper: {

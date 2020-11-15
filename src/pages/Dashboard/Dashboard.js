@@ -34,21 +34,25 @@ function Dashboard({ currentUser }) {
   return (
     <div className={classes.dashboardContainer}>
       <div className={classes.fieldNavWrapper}>
-        {fieldNavList.map(item => (
-          <div
-            className={`${classes.itemWrapper} ${
-              item.checked ? classes.checkedItemWrapper : ''
-            }`}
-            key={item.name}
-            onClick={() => handleFieldSelect(item.name)}
-            onKeyPress={e => handleKeyPress(e)}
-            role="button"
-            tabIndex={0}
-          >
-            <div className={`${item.checked ? classes.checkedItem : ''}`} />
-            <div className={classes.itemNameWrapper}>{item.name}</div>
+        <div className={classes.outerItemWrapper}>
+          <div className={classes.mainItemWrapper}>
+            {fieldNavList.map(item => (
+              <div
+                className={`${classes.itemWrapper} ${
+                  item.checked ? classes.checkedItemWrapper : ''
+                }`}
+                key={item.name}
+                onClick={() => handleFieldSelect(item.name)}
+                onKeyPress={e => handleKeyPress(e)}
+                role="button"
+                tabIndex={0}
+              >
+                <div className={`${item.checked ? classes.checkedItem : ''}`} />
+                <div className={classes.itemNameWrapper}>{item.name}</div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
       <div>{`User: ${username}`}</div>
     </div>
