@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { Typography } from '@material-ui/core';
+
 import { FIELD_LIST } from '../../globals/constants';
 import { useStyles } from './Dashboard.style';
 
@@ -48,7 +50,9 @@ function Dashboard({ currentUser }) {
                 tabIndex={0}
               >
                 <div className={`${item.checked ? classes.checkedItem : ''}`} />
-                <div className={classes.itemNameWrapper}>{item.name}</div>
+                <div className={classes.itemNameWrapper}>
+                  <Typography variant="subtitle1">{item.name}</Typography>
+                </div>
               </div>
             ))}
           </div>
