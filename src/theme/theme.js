@@ -12,6 +12,7 @@ const SIGNIN_BUTTON_SIZE = 90;
 const SIGNUP_BUTTON_SIZE = 94;
 
 const headerBackgroundColor = '#ffffff';
+const lightTextColor = '#ffffff';
 const mainBodyColor = '#F5F7F9';
 const mainTextColor = '#333333';
 const primaryColor = '#3F51B5';
@@ -20,6 +21,7 @@ const titleTextColor = '#15214D';
 export const theme = createMuiTheme({
   color: {
     headerBackgroundColor,
+    lightTextColor,
     mainBodyColor,
     mainTextColor,
     primaryColor,
