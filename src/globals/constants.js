@@ -82,7 +82,7 @@ export const LOADER = {
 };
 export const PROJECT_TITLE = 'Finance Analytics';
 export const QUICKBOOKS_SIGNIN = {
-  title: 'You are not Signed In to Quickbooks!!!',
+  title: 'You are not Signed In to Quickbooks!',
   subtitle: 'Press the button to complete Single Sign On and to see the data.',
 };
 export const SIGN_IN_SECTION = {

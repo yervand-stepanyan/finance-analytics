@@ -16,11 +16,13 @@ const SIGNUP_BUTTON_SIZE = 94;
 const TAB_HEIGHT = 48;
 const TAB_BORDER_SIZE = 3;
 
+const fieldNavBackgroundColor = '#ffffff';
 const headerBackgroundColor = '#ffffff';
 const lightTextColor = '#ffffff';
-const mainBodyColor = '#F5F7F9';
+const mainBackgroundColor = '#F5F7F9';
 const mainTextColor = '#333333';
 const primaryColor = '#3F51B5';
+const tabBarBackgroundColor = '#ffffff';
 const tabNotSelectedColor = '#808080';
 const titleTextColor = '#15214D';
 
@@ -32,11 +34,13 @@ export const theme = createMuiTheme({
     },
   },
   color: {
+    fieldNavBackgroundColor,
     headerBackgroundColor,
     lightTextColor,
-    mainBodyColor,
+    mainBackgroundColor,
     mainTextColor,
     primaryColor,
+    tabBarBackgroundColor,
     tabNotSelectedColor,
     titleTextColor,
   },

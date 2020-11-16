@@ -11,7 +11,7 @@ export const useStyles = makeStyles(theme => ({
   },
   fieldNavWrapper: {
     display: 'flex',
-    backgroundColor: theme.color.headerBackgroundColor,
+    backgroundColor: theme.color.fieldNavBackgroundColor,
     boxSizing: 'border-box',
     padding: `${theme.customSpacing.small} ${theme.customSpacing.base}`,
     'overflow-x': 'auto',
@@ -78,7 +78,7 @@ export const useStyles = makeStyles(theme => ({
   },
   tabAndCardsWrapper: {},
   tabBarContainer: {
-    backgroundColor: theme.color.lightTextColor,
+    backgroundColor: theme.color.tabBarBackgroundColor,
     padding: `0 ${theme.customSpacing.base}`,
     '@media only screen and (min-width: 600px)': {
       borderRadius: theme.border.borderRadius,

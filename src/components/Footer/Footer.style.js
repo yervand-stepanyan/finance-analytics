@@ -7,7 +7,7 @@ export const useStyles = makeStyles(theme => ({
   footerContainer: {
     backgroundColor: theme.color.titleTextColor,
     boxSizing: 'border-box',
-    color: theme.color.headerBackgroundColor,
+    color: theme.color.lightTextColor,
     cursor: 'default',
     padding: theme.customSpacing.base,
     position: 'relative',
@@ -41,7 +41,7 @@ export const useStyles = makeStyles(theme => ({
     width: 'inherit',
   },
   titleWrapper: {
-    color: theme.color.headerBackgroundColor,
+    color: theme.color.lightTextColor,
     marginLeft: theme.customSpacing.base,
   },
   link: {
