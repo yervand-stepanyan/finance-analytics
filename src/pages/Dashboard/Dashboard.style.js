@@ -51,16 +51,16 @@ export const useStyles = makeStyles(theme => ({
   },
   checkedItem: {
     backgroundColor: theme.color.primaryColor,
-    borderBottomLeftRadius: theme.size.fieldItemFullSize,
-    borderBottomRightRadius: theme.size.fieldItemFullSize,
-    height: theme.size.fieldItemPartSize,
-    width: theme.size.fieldItemFullSize,
+    borderBottomLeftRadius: theme.size.fieldItemLength,
+    borderBottomRightRadius: theme.size.fieldItemLength,
+    height: theme.size.fieldItemThickness,
+    width: theme.size.fieldItemLength,
     '@media only screen and (min-width: 600px)': {
       borderBottomLeftRadius: 0,
-      borderBottomRightRadius: theme.size.fieldItemFullSize,
-      borderTopRightRadius: theme.size.fieldItemFullSize,
+      borderBottomRightRadius: theme.size.fieldItemLength,
+      borderTopRightRadius: theme.size.fieldItemLength,
       height: theme.size.fieldItemHeightLargeScreen,
-      width: theme.size.fieldItemPartSize,
+      width: theme.size.fieldItemThickness,
     },
   },
   itemNameWrapper: {
