@@ -42,7 +42,7 @@ export const useStyles = makeStyles(theme => ({
     outline: 'none',
     '@media only screen and (min-width: 600px)': {
       flexDirection: 'row',
-      height: theme.size.fieldItemFullSize,
+      height: theme.size.fieldItemHeightLargeScreen,
       margin: `0 0 ${theme.customSpacing.small} 0`,
     },
   },
@@ -59,7 +59,7 @@ export const useStyles = makeStyles(theme => ({
       borderBottomLeftRadius: 0,
       borderBottomRightRadius: theme.size.fieldItemFullSize,
       borderTopRightRadius: theme.size.fieldItemFullSize,
-      height: theme.size.fieldItemFullSize,
+      height: theme.size.fieldItemHeightLargeScreen,
       width: theme.size.fieldItemPartSize,
     },
   },

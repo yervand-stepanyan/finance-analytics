@@ -60,7 +60,7 @@ function Dashboard() {
       <div className={classes.contentWrapper}>
         <div className={classes.tabBarWrapper}>
           {tabs.map(tab => (
-            <div>{tab}</div>
+            <div key={tab}>{tab}</div>
           ))}
         </div>
       </div>

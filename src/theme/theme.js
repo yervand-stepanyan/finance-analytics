@@ -1,5 +1,6 @@
 import { createMuiTheme } from '@material-ui/core';
 
+const FIELD_ITEM_HEIGHT_LARGE_SCREEN = 72;
 const FIELD_ITEM_SIZE = 32;
 const FIELD_NAVIGATION_WIDTH = 120;
 const HEADER_BUTTON_SIZE = 104;
@@ -37,6 +38,7 @@ export const theme = createMuiTheme({
   },
   size: {
     fieldItemFullSize: `${FIELD_ITEM_SIZE}px`,
+    fieldItemHeightLargeScreen: `${FIELD_ITEM_HEIGHT_LARGE_SCREEN}px`,
     fieldItemPartSize: `${FIELD_ITEM_SIZE / 4}px`,
     fieldNavigationWidth: `${FIELD_NAVIGATION_WIDTH + FIELD_ITEM_SIZE}px`,
     headerButton: `${HEADER_BUTTON_SIZE}px`,
