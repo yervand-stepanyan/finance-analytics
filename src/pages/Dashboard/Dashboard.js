@@ -6,13 +6,19 @@ import { FIELD_LIST } from '../../globals/constants';
 import { useStyles } from './Dashboard.style';
 
 function Dashboard() {
-  const tabs = ['Accounts', 'Customers', 'Payments', 'Invoices'];
+  const tabs = [
+    { title: 'Accounts', checked: true },
+    { title: 'Customers', checked: false },
+    { title: 'Payments', checked: false },
+    { title: 'Invoices', checked: false },
+  ];
   const classes = useStyles();
   const [fieldNavList, setFieldNavList] = useState(FIELD_LIST);
+  const [tabList, setTabList] = useState(tabs);
 
-  const handleFieldSelect = name => {
+  const handleFieldSelect = title => {
     const newFieldNavList = fieldNavList.map(field =>
-      field.name === name
+      field.title === title
         ? {
             ...field,
             checked: true,
@@ -26,9 +32,31 @@ function Dashboard() {
     setFieldNavList(newFieldNavList);
   };
 
-  const handleKeyPress = event => {
+  const handleFieldItemKeyPress = event => {
     if (event.key === 'Enter') {
       handleFieldSelect();
+    }
+  };
+
+  const handleTabSelect = title => {
+    const newTabList = tabList.map(tab =>
+      tab.title === title
+        ? {
+            ...tab,
+            checked: true,
+          }
+        : {
+            ...tab,
+            checked: false,
+          }
+    );
+
+    setTabList(newTabList);
+  };
+
+  const handleTabKeyPress = event => {
+    if (event.key === 'Enter') {
+      handleTabSelect();
     }
   };
 
@@ -42,15 +70,15 @@ function Dashboard() {
                 className={`${classes.itemWrapper} ${
                   item.checked ? classes.checkedItemWrapper : ''
                 }`}
-                key={item.name}
-                onClick={() => handleFieldSelect(item.name)}
-                onKeyPress={e => handleKeyPress(e)}
+                key={item.title}
+                onClick={() => handleFieldSelect(item.title)}
+                onKeyPress={e => handleFieldItemKeyPress(e)}
                 role="button"
                 tabIndex={0}
               >
                 <div className={`${item.checked ? classes.checkedItem : ''}`} />
                 <div className={classes.itemNameWrapper}>
-                  <Typography variant="subtitle1">{item.name}</Typography>
+                  <Typography variant="subtitle1">{item.title}</Typography>
                 </div>
               </div>
             ))}
@@ -58,10 +86,25 @@ function Dashboard() {
         </div>
       </div>
       <div className={classes.contentWrapper}>
-        <div className={classes.tabBarWrapper}>
-          {tabs.map(tab => (
-            <div key={tab}>{tab}</div>
-          ))}
+        <div className={classes.tabAndCardsWrapper}>
+          <div className={classes.tabBarContainer}>
+            <div className={classes.tabBarWrapper}>
+              {tabList.map(tab => (
+                <div
+                  className={`${classes.tabWrapper} ${
+                    tab.checked ? classes.checkedTab : ''
+                  }`}
+                  key={tab.title}
+                  onClick={() => handleTabSelect(tab.title)}
+                  onKeyPress={e => handleTabKeyPress(e)}
+                  role="button"
+                  tabIndex={0}
+                >
+                  <Typography variant="subtitle1">{tab.title}</Typography>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

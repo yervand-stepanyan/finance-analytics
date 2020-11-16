@@ -8,25 +8,36 @@ const HEADER_BUTTON_SIZE = 104;
 const HEADER_HEIGHT_MOBILE = 56;
 const HEADER_HEIGHT_LARGE_SCREEN = 64;
 const LOGO_SIZE = 48;
+const MAIN_BORDER_RADIUS_VALUE = 8;
 const MAIN_SPACING_VALUE = 16;
 const POPUP_MARGIN_VALUE = 2;
 const SIGNIN_BUTTON_SIZE = 90;
 const SIGNUP_BUTTON_SIZE = 94;
+const TAB_HEIGHT = 48;
+const TAB_BORDER_SIZE = 3;
 
 const headerBackgroundColor = '#ffffff';
 const lightTextColor = '#ffffff';
 const mainBodyColor = '#F5F7F9';
 const mainTextColor = '#333333';
 const primaryColor = '#3F51B5';
+const tabNotSelectedColor = '#808080';
 const titleTextColor = '#15214D';
 
 export const theme = createMuiTheme({
+  border: {
+    borderRadius: `${MAIN_BORDER_RADIUS_VALUE}px`,
+    tabBorder: {
+      size: `${TAB_BORDER_SIZE}px`,
+    },
+  },
   color: {
     headerBackgroundColor,
     lightTextColor,
     mainBodyColor,
     mainTextColor,
     primaryColor,
+    tabNotSelectedColor,
     titleTextColor,
   },
   customSpacing: {
@@ -50,5 +61,6 @@ export const theme = createMuiTheme({
     logo: `${LOGO_SIZE}px`,
     signinButton: `${SIGNIN_BUTTON_SIZE}px`,
     signupButton: `${SIGNUP_BUTTON_SIZE}px`,
+    tabHeight: `${TAB_HEIGHT}px`,
   },
 });

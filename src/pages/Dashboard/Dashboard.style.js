@@ -70,16 +70,46 @@ export const useStyles = makeStyles(theme => ({
   },
   contentWrapper: {
     boxSizing: 'border-box',
-    padding: theme.customSpacing.base,
+    padding: `${theme.customSpacing.small} 0`,
     width: '100%',
+    '@media only screen and (min-width: 600px)': {
+      padding: theme.customSpacing.base,
+    },
+  },
+  tabAndCardsWrapper: {},
+  tabBarContainer: {
+    backgroundColor: theme.color.lightTextColor,
+    padding: `0 ${theme.customSpacing.base}`,
+    '@media only screen and (min-width: 600px)': {
+      borderRadius: theme.border.borderRadius,
+    },
   },
   tabBarWrapper: {
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    backgroundColor: theme.color.primaryColor,
-    color: theme.color.lightTextColor,
+    justifyContent: 'flex-start',
     cursor: 'default',
-    height: theme.customSpacing.large,
+    height: theme.size.tabHeight,
+    'overflow-x': 'auto',
+    '@media only screen and (min-width: 600px)': {
+      justifyContent: 'space-around',
+    },
+  },
+  tabWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    borderBottom: `${theme.border.tabBorder.size} solid transparent`,
+    borderLeft: 'none',
+    borderRight: 'none',
+    borderTop: `${theme.border.tabBorder.size} solid transparent`,
+    boxSizing: 'border-box',
+    color: theme.color.tabNotSelectedColor,
+    cursor: 'pointer',
+    height: 'inherit',
+    outline: 'none',
+    padding: `0 ${theme.customSpacing.small}`,
+  },
+  checkedTab: {
+    color: theme.color.titleTextColor,
+    borderBottom: `${theme.border.tabBorder.size} solid ${theme.color.primaryColor}`,
   },
 }));
