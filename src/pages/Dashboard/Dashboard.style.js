@@ -12,6 +12,7 @@ export const useStyles = makeStyles(theme => ({
   fieldNavWrapper: {
     display: 'flex',
     backgroundColor: theme.color.headerBackgroundColor,
+    boxSizing: 'border-box',
     padding: `${theme.customSpacing.small} ${theme.customSpacing.base}`,
     'overflow-x': 'auto',
     '@media only screen and (min-width: 600px)': {
@@ -66,5 +67,19 @@ export const useStyles = makeStyles(theme => ({
     '@media only screen and (min-width: 600px)': {
       marginLeft: theme.customSpacing.small,
     },
+  },
+  contentWrapper: {
+    boxSizing: 'border-box',
+    padding: theme.customSpacing.base,
+    width: '100%',
+  },
+  tabBarWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    backgroundColor: theme.color.primaryColor,
+    color: theme.color.lightTextColor,
+    cursor: 'default',
+    height: theme.customSpacing.large,
   },
 }));

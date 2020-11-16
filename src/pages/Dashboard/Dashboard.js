@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 import { Typography } from '@material-ui/core';
 
 import { FIELD_LIST } from '../../globals/constants';
 import { useStyles } from './Dashboard.style';
 
-function Dashboard({ currentUser }) {
+function Dashboard() {
+  const tabs = ['Accounts', 'Customers', 'Payments', 'Invoices'];
   const classes = useStyles();
-  const { username } = currentUser;
   const [fieldNavList, setFieldNavList] = useState(FIELD_LIST);
 
   const handleFieldSelect = name => {
@@ -58,13 +57,15 @@ function Dashboard({ currentUser }) {
           </div>
         </div>
       </div>
-      <div>{`User: ${username}`}</div>
+      <div className={classes.contentWrapper}>
+        <div className={classes.tabBarWrapper}>
+          {tabs.map(tab => (
+            <div>{tab}</div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
-
-Dashboard.propTypes = {
-  currentUser: PropTypes.object.isRequired,
-};
 
 export default Dashboard;
