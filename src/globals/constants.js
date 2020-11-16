@@ -3,9 +3,9 @@ import signIn from '../assets/images/signIn-1760x990.png';
 import signInIcon from '../assets/icons/icon-signin-24x24.png';
 import signOutIcon from '../assets/icons/icon-signout-24x24.png';
 import signUp from '../assets/images/signup-1760x990.png';
-import ROUTES from '../routes';
 
 export const BUTTON_LABEL = {
+  quickbooksSignIn: 'Single Sign On',
   signIn: 'Sign In',
   signOut: 'Sign Out',
   signUp: 'Sign Up',
@@ -80,13 +80,11 @@ export const LOADER = {
     title: 'page',
   },
 };
-export const MENU_ITEMS = [
-  {
-    title: 'Dashboard',
-    route: ROUTES.dashboard,
-  },
-];
 export const PROJECT_TITLE = 'Finance Analytics';
+export const QUICKBOOKS_SIGNIN = {
+  title: 'You are not Signed In to Quickbooks!!!',
+  subtitle: 'Press the button to complete Single Sign On and to see the data.',
+};
 export const SIGN_IN_SECTION = {
   placeholder: {
     username: 'example@mail.com',
