@@ -12,31 +12,31 @@ export const BUTTON_LABEL = {
 };
 export const FIELD_LIST = [
   {
-    name: 'Finance',
+    title: 'Finance',
     checked: true,
   },
   {
-    name: 'TestItem2',
+    title: 'TestItem2',
     checked: false,
   },
   {
-    name: 'TestItem3',
+    title: 'TestItem3',
     checked: false,
   },
   {
-    name: 'TestItem4',
+    title: 'TestItem4',
     checked: false,
   },
   {
-    name: 'TestItem5',
+    title: 'TestItem5',
     checked: false,
   },
   {
-    name: 'TestItem6',
+    title: 'TestItem6',
     checked: false,
   },
   {
-    name: 'TestItem7',
+    title: 'TestItem7',
     checked: false,
   },
 ];
@@ -82,7 +82,7 @@ export const LOADER = {
 };
 export const MENU_ITEMS = [
   {
-    name: 'Dashboard',
+    title: 'Dashboard',
     route: ROUTES.dashboard,
   },
 ];
