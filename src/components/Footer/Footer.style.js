@@ -19,7 +19,7 @@ export const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     width: '100%',
   },
-  logoAndCreatorWrapper: {
+  logoAndAuthorWrapper: {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
@@ -47,7 +47,7 @@ export const useStyles = makeStyles(theme => ({
   link: {
     textDecoration: 'none',
   },
-  creatorWrapper: {
+  authorWrapper: {
     marginTop: theme.customSpacing.small,
     '@media only screen and (min-width: 600px)': {
       marginTop: 0,

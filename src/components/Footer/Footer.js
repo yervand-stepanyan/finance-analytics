@@ -25,7 +25,7 @@ function Footer({ handleOpenMobileMenu, handleOpenUserMenu }) {
       }`}
     >
       <div className={classes.contentContainer}>
-        <div className={classes.logoAndCreatorWrapper}>
+        <div className={classes.logoAndAuthorWrapper}>
           <Link className={classes.link} onClick={handleHome} to={ROUTES.home}>
             <div className={classes.logoAndTitleWrapper}>
               <div className={classes.logoWrapper}>
@@ -40,9 +40,9 @@ function Footer({ handleOpenMobileMenu, handleOpenUserMenu }) {
               </div>
             </div>
           </Link>
-          <div className={classes.creatorWrapper}>
+          <div className={classes.authorWrapper}>
             <Typography variant="subtitle1">
-              {FOOTER_INFO.creatorName}
+              {FOOTER_INFO.authorName}
             </Typography>
           </div>
         </div>
