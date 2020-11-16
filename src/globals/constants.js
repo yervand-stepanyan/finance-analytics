@@ -15,9 +15,33 @@ export const FIELD_LIST = [
     name: 'Finance',
     checked: true,
   },
+  {
+    name: 'TestItem2',
+    checked: false,
+  },
+  {
+    name: 'TestItem3',
+    checked: false,
+  },
+  {
+    name: 'TestItem4',
+    checked: false,
+  },
+  {
+    name: 'TestItem5',
+    checked: false,
+  },
+  {
+    name: 'TestItem6',
+    checked: false,
+  },
+  {
+    name: 'TestItem7',
+    checked: false,
+  },
 ];
 export const FOOTER_INFO = {
-  creatorName: 'Yervand Stepanyan',
+  authorName: 'Yervand Stepanyan',
   year: '2020',
 };
 export const ICON = {
