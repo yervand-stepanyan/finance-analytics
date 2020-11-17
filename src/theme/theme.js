@@ -1,5 +1,6 @@
 import { createMuiTheme } from '@material-ui/core';
 
+const CARD_WIDTH = 150;
 const FIELD_ITEM_HEIGHT_LARGE_SCREEN = 72;
 const FIELD_ITEM_LENGTH = 48;
 const FIELD_ITEM_THICKNESS = 8;
@@ -25,6 +26,7 @@ const primaryColor = '#3F51B5';
 const tabBarBackgroundColor = '#ffffff';
 const tabNotSelectedColor = '#808080';
 const titleTextColor = '#15214D';
+const cardBackgroundColor = '#edfcff';
 
 export const theme = createMuiTheme({
   border: {
@@ -34,6 +36,7 @@ export const theme = createMuiTheme({
     },
   },
   color: {
+    cardBackgroundColor,
     fieldNavBackgroundColor,
     headerBackgroundColor,
     lightTextColor,
@@ -54,6 +57,7 @@ export const theme = createMuiTheme({
     xxxLarge: `${MAIN_SPACING_VALUE * 6}px`,
   },
   size: {
+    cardWidth: `${CARD_WIDTH}px`,
     fieldItemLength: `${FIELD_ITEM_LENGTH}px`,
     fieldItemHeightLargeScreen: `${FIELD_ITEM_HEIGHT_LARGE_SCREEN}px`,
     fieldItemThickness: `${FIELD_ITEM_THICKNESS}px`,
