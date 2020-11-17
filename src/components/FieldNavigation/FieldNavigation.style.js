@@ -22,6 +22,7 @@ export const useStyles = makeStyles(theme => ({
     display: 'flex',
     '@media only screen and (min-width: 600px)': {
       flexDirection: 'column',
+      width: '100%',
     },
   },
   itemWrapper: {
@@ -39,7 +40,12 @@ export const useStyles = makeStyles(theme => ({
     },
   },
   checkedItemWrapper: {
+    color: theme.color.titleTextColor,
     cursor: 'default',
+  },
+  disabledItem: {
+    color: theme.color.disabledFieldColor,
+    cursor: 'not-allowed',
   },
   checkedItem: {
     backgroundColor: theme.color.primaryColor,

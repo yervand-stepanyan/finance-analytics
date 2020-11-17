@@ -16,23 +16,34 @@ function FieldNavigation({
     <div className={classes.fieldNavigationContainer}>
       <div className={classes.outerItemWrapper}>
         <div className={classes.mainItemWrapper}>
-          {fieldNavigationList.map(item => (
-            <div
-              className={`${classes.itemWrapper} ${
-                item.checked ? classes.checkedItemWrapper : ''
-              }`}
-              key={item.title}
-              onClick={() => handleFieldSelect(item.title)}
-              onKeyPress={e => handleFieldItemKeyPress(e)}
-              role="button"
-              tabIndex={0}
-            >
-              <div className={`${item.checked ? classes.checkedItem : ''}`} />
-              <div className={classes.itemNameWrapper}>
-                <Typography variant="subtitle1">{item.title}</Typography>
+          {fieldNavigationList.map(item =>
+            item.disabled ? (
+              <div
+                className={`${classes.disabledItem} ${classes.itemWrapper}`}
+                key={item.title}
+              >
+                <div className={classes.itemNameWrapper}>
+                  <Typography variant="subtitle1">{item.title}</Typography>
+                </div>
               </div>
-            </div>
-          ))}
+            ) : (
+              <div
+                className={`${classes.itemWrapper} ${
+                  item.checked ? classes.checkedItemWrapper : ''
+                }`}
+                key={item.title}
+                onClick={() => handleFieldSelect(item.title)}
+                onKeyPress={e => handleFieldItemKeyPress(e)}
+                role="button"
+                tabIndex={0}
+              >
+                <div className={`${item.checked ? classes.checkedItem : ''}`} />
+                <div className={classes.itemNameWrapper}>
+                  <Typography variant="subtitle1">{item.title}</Typography>
+                </div>
+              </div>
+            )
+          )}
         </div>
       </div>
     </div>
