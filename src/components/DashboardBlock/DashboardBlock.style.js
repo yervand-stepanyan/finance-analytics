@@ -13,7 +13,7 @@ export const useStyles = makeStyles(theme => ({
     display: 'flex',
     backgroundColor: theme.color.fieldNavBackgroundColor,
     boxSizing: 'border-box',
-    padding: `${theme.customSpacing.small} ${theme.customSpacing.base}`,
+    padding: `${theme.customSpacing.small} 0`,
     'overflow-x': 'auto',
     '@media only screen and (min-width: 600px)': {
       flexDirection: 'column',
@@ -79,7 +79,6 @@ export const useStyles = makeStyles(theme => ({
   tabAndCardsWrapper: {},
   tabBarContainer: {
     backgroundColor: theme.color.tabBarBackgroundColor,
-    padding: `0 ${theme.customSpacing.base}`,
     '@media only screen and (min-width: 600px)': {
       borderRadius: theme.border.borderRadius,
     },
