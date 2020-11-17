@@ -4,6 +4,7 @@ import { Typography } from '@material-ui/core';
 
 import { FIELD_LIST } from '../../globals/constants';
 import { useStyles } from './DashboardBlock.style';
+import FieldNavigation from '../FieldNavigation';
 
 function DashboardBlock() {
   const tabs = [
@@ -13,11 +14,11 @@ function DashboardBlock() {
     { title: 'Invoices', checked: false },
   ];
   const classes = useStyles();
-  const [fieldNavList, setFieldNavList] = useState(FIELD_LIST);
+  const [fieldNavigationList, setFieldNavigationList] = useState(FIELD_LIST);
   const [tabList, setTabList] = useState(tabs);
 
   const handleFieldSelect = title => {
-    const newFieldNavList = fieldNavList.map(field =>
+    const newFieldNavList = fieldNavigationList.map(field =>
       field.title === title
         ? {
             ...field,
@@ -29,7 +30,7 @@ function DashboardBlock() {
           }
     );
 
-    setFieldNavList(newFieldNavList);
+    setFieldNavigationList(newFieldNavList);
   };
 
   const handleFieldItemKeyPress = event => {
@@ -62,29 +63,11 @@ function DashboardBlock() {
 
   return (
     <div className={classes.dashboardBlockContainer}>
-      <div className={classes.fieldNavWrapper}>
-        <div className={classes.outerItemWrapper}>
-          <div className={classes.mainItemWrapper}>
-            {fieldNavList.map(item => (
-              <div
-                className={`${classes.itemWrapper} ${
-                  item.checked ? classes.checkedItemWrapper : ''
-                }`}
-                key={item.title}
-                onClick={() => handleFieldSelect(item.title)}
-                onKeyPress={e => handleFieldItemKeyPress(e)}
-                role="button"
-                tabIndex={0}
-              >
-                <div className={`${item.checked ? classes.checkedItem : ''}`} />
-                <div className={classes.itemNameWrapper}>
-                  <Typography variant="subtitle1">{item.title}</Typography>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <FieldNavigation
+        fieldNavigationList={fieldNavigationList}
+        handleFieldItemKeyPress={handleFieldItemKeyPress}
+        handleFieldSelect={handleFieldSelect}
+      />
       <div className={classes.contentWrapper}>
         <div className={classes.tabAndCardsWrapper}>
           <div className={classes.tabBarContainer}>
