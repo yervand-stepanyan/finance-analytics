@@ -1,3 +1,4 @@
+import loading from '../assets/images/loading-1280x720.png';
 import logo from '../assets/images/financial-analytics-48x48.png';
 import signIn from '../assets/images/signIn-1760x990.png';
 import signInIcon from '../assets/icons/icon-signin-24x24.png';
@@ -37,6 +38,10 @@ export const ICON = {
   },
 };
 export const IMAGE = {
+  loading: {
+    src: loading,
+    title: 'Loading image',
+  },
   logo: {
     src: logo,
     title: 'Logo image',
@@ -55,6 +60,9 @@ export const LOADER = {
     size: 24,
     thickness: 8,
     title: 'button',
+  },
+  finance: {
+    title: 'finance',
   },
   page: {
     size: 60,
