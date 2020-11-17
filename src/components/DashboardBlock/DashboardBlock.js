@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
-import { Typography } from '@material-ui/core';
-
 import { FIELD_LIST } from '../../globals/constants';
 import { useStyles } from './DashboardBlock.style';
 import FieldNavigation from '../FieldNavigation';
+import ContentSection from '../ContentSection';
 
 function DashboardBlock() {
   const tabs = [
@@ -68,28 +67,11 @@ function DashboardBlock() {
         handleFieldItemKeyPress={handleFieldItemKeyPress}
         handleFieldSelect={handleFieldSelect}
       />
-      <div className={classes.contentWrapper}>
-        <div className={classes.tabAndCardsWrapper}>
-          <div className={classes.tabBarContainer}>
-            <div className={classes.tabBarWrapper}>
-              {tabList.map(tab => (
-                <div
-                  className={`${classes.tabWrapper} ${
-                    tab.checked ? classes.checkedTab : ''
-                  }`}
-                  key={tab.title}
-                  onClick={() => handleTabSelect(tab.title)}
-                  onKeyPress={e => handleTabKeyPress(e)}
-                  role="button"
-                  tabIndex={0}
-                >
-                  <Typography variant="subtitle1">{tab.title}</Typography>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+      <ContentSection
+        handleTabKeyPress={handleTabKeyPress}
+        handleTabSelect={handleTabSelect}
+        tabList={tabList}
+      />
     </div>
   );
 }
