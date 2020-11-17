@@ -1,20 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useStyles } from './ContentSection.style';
+import CardsBlock from '../CardsBlock';
 import TabBar from '../TabBar';
+import { useStyles } from './ContentSection.style';
 
 function ContentSection({ handleTabKeyPress, handleTabSelect, tabList }) {
   const classes = useStyles();
 
   return (
     <div className={classes.contentSectionContainer}>
-      <div className={classes.tabAndCardsWrapper}>
+      <div className={classes.tabBarAndCardsBlockWrapper}>
         <TabBar
           handleTabKeyPress={handleTabKeyPress}
           handleTabSelect={handleTabSelect}
           tabList={tabList}
         />
+        <CardsBlock />
       </div>
     </div>
   );

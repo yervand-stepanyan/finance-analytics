@@ -9,5 +9,5 @@ export const useStyles = makeStyles(theme => ({
       padding: theme.customSpacing.base,
     },
   },
-  tabAndCardsWrapper: {},
+  tabBarAndCardsBlockWrapper: {},
 }));
