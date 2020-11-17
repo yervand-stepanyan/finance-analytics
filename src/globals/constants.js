@@ -12,32 +12,14 @@ export const BUTTON_LABEL = {
 };
 export const FIELD_LIST = [
   {
-    title: 'Finance',
     checked: true,
+    disabled: false,
+    title: 'Finance',
   },
   {
-    title: 'TestItem2',
     checked: false,
-  },
-  {
-    title: 'TestItem3',
-    checked: false,
-  },
-  {
-    title: 'TestItem4',
-    checked: false,
-  },
-  {
-    title: 'TestItem5',
-    checked: false,
-  },
-  {
-    title: 'TestItem6',
-    checked: false,
-  },
-  {
-    title: 'TestItem7',
-    checked: false,
+    disabled: true,
+    title: 'Analytics',
   },
 ];
 export const FOOTER_INFO = {
