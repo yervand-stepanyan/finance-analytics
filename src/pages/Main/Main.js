@@ -32,16 +32,20 @@ function Main() {
   const handleOpenMobileMenu = isOpen => {
     if (isOpen !== undefined) {
       setIsMobileMenuOpen(isOpen);
+      setIsUserMenuOpen(isOpen);
     } else {
       setIsMobileMenuOpen(!isMobileMenuOpen);
+      setIsUserMenuOpen(!isUserMenuOpen);
     }
   };
 
   const handleOpenUserMenu = isOpen => {
     if (isOpen !== undefined) {
       setIsUserMenuOpen(isOpen);
+      setIsMobileMenuOpen(isOpen);
     } else {
       setIsUserMenuOpen(!isUserMenuOpen);
+      setIsMobileMenuOpen(!isMobileMenuOpen);
     }
   };
 
