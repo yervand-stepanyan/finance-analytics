@@ -10,19 +10,19 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import { BUTTON_LABEL, ICON } from '../../globals/constants';
 import { useStyles } from './FinanceSettings.style';
 
-function FinanceSettings({ handleShowPopup, showPopup }) {
+function FinanceSettings({ handleShowSignOutPopup, showSignOutPopup }) {
   const classes = useStyles();
 
   return (
     <div className={classes.financeSettingsContainer}>
       <div>
-        <IconButton onClick={handleShowPopup}>
+        <IconButton onClick={handleShowSignOutPopup}>
           <SettingsIcon />
         </IconButton>
       </div>
       <div
         className={`${
-          showPopup ? classes.signOutPopup : classes.signOutPopupHidden
+          showSignOutPopup ? classes.signOutPopup : classes.signOutPopupHidden
         }`}
       >
         <Paper className={classes.paper}>
@@ -47,8 +47,8 @@ function FinanceSettings({ handleShowPopup, showPopup }) {
 }
 
 FinanceSettings.propTypes = {
-  handleShowPopup: PropTypes.func.isRequired,
-  showPopup: PropTypes.bool.isRequired,
+  handleShowSignOutPopup: PropTypes.func.isRequired,
+  showSignOutPopup: PropTypes.bool.isRequired,
 };
 
 export default FinanceSettings;

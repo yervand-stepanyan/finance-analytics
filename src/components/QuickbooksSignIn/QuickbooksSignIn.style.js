@@ -3,12 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles(theme => ({
   quickbooksSignInContainer: {
     display: 'flex',
-    alignItems: 'center',
     flexDirection: 'column',
-    minHeight: 'inherit',
-    padding: `${theme.customSpacing.xxxLarge} ${theme.customSpacing.base}`,
+    boxSizing: 'border-box',
+    padding: `${theme.customSpacing.xxxLarge} ${theme.customSpacing.base} 0`,
     textAlign: 'center',
-    '@media only screen and (min-width: 600px)': {},
+    '@media only screen and (min-width: 600px)': {
+      width: '100%',
+    },
   },
   titleWrapper: {
     color: theme.color.titleTextColor,
