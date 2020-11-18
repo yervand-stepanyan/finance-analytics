@@ -1,4 +1,5 @@
-import exit from '../assets/icons/icon-exit-26x26.png';
+import enterIcon from '../assets/icons/icon-enter-26x26.png';
+import exitIcon from '../assets/icons/icon-exit-26x26.png';
 import loading from '../assets/images/loading-1280x720.png';
 import logo from '../assets/images/financial-analytics-48x48.png';
 import signIn from '../assets/images/signIn-1760x990.png';
@@ -30,8 +31,12 @@ export const FOOTER_INFO = {
   year: '2020',
 };
 export const ICON = {
+  enter: {
+    src: enterIcon,
+    title: 'Enter icon',
+  },
   exit: {
-    src: exit,
+    src: exitIcon,
     title: 'Exit icon',
   },
   signIn: {
