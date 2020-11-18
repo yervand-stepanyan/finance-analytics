@@ -76,8 +76,8 @@ function Header({
               </div>
               <MenuSectionMobile
                 handleOpenMobileMenu={handleOpenMobileMenu}
-                isMobileMenuOpen={isMobileMenuOpen}
                 handleSignOut={signOut}
+                isMobileMenuOpen={isMobileMenuOpen}
                 username={username}
               />
             </div>

@@ -9,7 +9,7 @@ export const useStyles = makeStyles(theme => ({
   signOutPopup: {
     position: 'absolute',
     right: theme.customSpacing.base,
-    top: theme.customSpacing.xLarge,
+    top: theme.size.financeSettingsPopupMarginTop,
     '@media only screen and (min-width: 600px)': {
       right: 0,
     },
