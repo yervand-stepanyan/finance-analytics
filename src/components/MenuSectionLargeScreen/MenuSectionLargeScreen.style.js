@@ -19,7 +19,8 @@ export const useStyles = makeStyles(theme => ({
   menuPopupWrapper: {
     position: 'absolute',
     right: theme.customSpacing.base,
-    top: theme.size.headerHeightLargeScreen,
+    top: theme.size.menuMarginTopLargeScreen,
+    'z-index': 1,
   },
   menuPopupHidden: {
     display: 'none',

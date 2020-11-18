@@ -5,7 +5,8 @@ export const useStyles = makeStyles(theme => ({
     position: 'absolute',
     marginLeft: theme.customSpacing.base,
     right: theme.customSpacing.base,
-    top: theme.size.headerHeightMobile,
+    top: theme.size.menuMarginTopMobile,
+    'z-index': 1,
     '@media only screen and (min-width: 600px)': {
       display: 'none',
     },
