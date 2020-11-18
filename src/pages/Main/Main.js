@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Redirect,
+  Route,
+} from 'react-router-dom';
 
-import Dashboard from '../Dashboard';
+import Finance from '../Finance';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Home from '../Home';
@@ -16,6 +21,7 @@ import SnackbarComponent from '../../components/Snackbar/SnackbarComponent';
 
 function Main() {
   const classes = useStyles();
+  const [accessToken, setAccessToken] = useState('');
   const [currentUser, setCurrentUser] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSnackbarSuccess, setIsSnackbarSuccess] = useState(true);
@@ -44,8 +50,10 @@ function Main() {
     handleOpenUserMenu(false);
   };
 
-  const handleCurrentUser = user => {
+  const handleCurrentUser = (accessTkn, user) => {
     setCurrentUser(user);
+
+    setAccessToken(accessTkn);
   };
 
   const handleSignOut = () => {
@@ -100,11 +108,15 @@ function Main() {
               />
             </Route>
             <ProtectedRoute
-              component={Dashboard}
+              accessToken={accessToken}
+              component={Finance}
               currentUser={currentUser}
-              path={ROUTES.dashboard}
+              path={ROUTES.finance}
               redirectTo={ROUTES.signin}
             />
+            <Route path="*">
+              <Redirect to={ROUTES.home} />
+            </Route>
           </Switch>
           <Footer
             handleOpenMobileMenu={handleOpenMobileMenu}
