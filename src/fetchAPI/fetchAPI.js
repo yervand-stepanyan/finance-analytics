@@ -2,6 +2,7 @@ import QueryString from 'query-string';
 
 const getCurrentUserURL = `${process.env.REACT_APP_ROOT_API}/api/v1/users/current`;
 const getDataURI = `${process.env.REACT_APP_ROOT_API}/api/v1/finances`;
+const quickbooksURL = `${process.env.REACT_APP_ROOT_API}/api/v1/finances/quick-books`;
 const postTokenURL = `${process.env.REACT_APP_ROOT_API}/api/v1/oauth2/token`;
 const postUserURL = `${process.env.REACT_APP_ROOT_API}/api/v1/users`;
 
@@ -64,6 +65,37 @@ async function requestData({ uri, method, accessToken }) {
   return response.json();
 }
 
+async function deleteQuickbooks({ url, method, accessToken }) {
+  const fetchOptions = {
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${accessToken}`,
+    },
+    method,
+  };
+
+  const response = await fetch(url, fetchOptions);
+
+  return response.json();
+}
+
+async function requestQuickbooks({ url, method, accessToken }) {
+  const fetchOptions = {
+    body: JSON.stringify({
+      authorization: `Bearer ${accessToken}`,
+      redirectUri: 'http://localhost:9000',
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method,
+  };
+
+  const response = await fetch(url, fetchOptions);
+
+  return response.json();
+}
+
 const API = {
   getAccounts: accessToken =>
     requestData({
@@ -95,6 +127,12 @@ const API = {
       method: 'GET',
       accessToken,
     }),
+  postQuickbooks: accessToken =>
+    requestQuickbooks({
+      url: quickbooksURL,
+      method: 'POST',
+      accessToken,
+    }),
   postToken: body =>
     requestToken({
       url: postTokenURL,
@@ -102,6 +140,12 @@ const API = {
       body,
     }),
   postUser: body => requestJSON({ url: postUserURL, method: 'POST', body }),
+  removeQuickbooks: accessToken =>
+    deleteQuickbooks({
+      url: quickbooksURL,
+      method: 'DELETE',
+      accessToken,
+    }),
 };
 
 export default API;
