@@ -51,11 +51,14 @@ function Signin({ handleCurrentUser }) {
       const routeToRedirect = ROUTES.finance;
       const userToSignIn = { username, password };
       const response = await API.postToken(userToSignIn);
-      const { accessToken } = response;
-      const user = await API.getCurrentUser(accessToken);
+      const accessTokenData = {
+        accessToken: response.accessToken,
+        accessTokenExpiresAt: response.accessTokenExpiresAt,
+      };
+      const user = await API.getCurrentUser(accessTokenData.accessToken);
 
       if (user.username) {
-        handleCurrentUser(accessToken, user);
+        handleCurrentUser({ accessTokenData, user });
 
         setTimeout(() => {
           history.push(routeToRedirect);
