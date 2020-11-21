@@ -8,16 +8,19 @@ import ROUTES from '../../routes';
 
 function FinanceBlock({
   accessToken,
+  handleCurrentUser,
   handleTabKeyPress,
   handleTabSelect,
   tabList,
 }) {
-  const { nestedRoute } = useParams();
+  const { route } = useParams();
 
-  switch (nestedRoute) {
+  switch (route) {
     case ROUTES.financeDashboard:
       return (
         <FinanceDashboard
+          accessToken={accessToken}
+          handleCurrentUser={handleCurrentUser}
           handleTabKeyPress={handleTabKeyPress}
           handleTabSelect={handleTabSelect}
           tabList={tabList}
@@ -32,6 +35,7 @@ function FinanceBlock({
 
 FinanceBlock.propTypes = {
   accessToken: PropTypes.string.isRequired,
+  handleCurrentUser: PropTypes.func.isRequired,
   handleTabKeyPress: PropTypes.func.isRequired,
   handleTabSelect: PropTypes.func.isRequired,
   tabList: PropTypes.array.isRequired,

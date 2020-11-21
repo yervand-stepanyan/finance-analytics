@@ -19,7 +19,11 @@ function Home({ currentUser }) {
 }
 
 Home.propTypes = {
-  currentUser: PropTypes.object.isRequired,
+  currentUser: PropTypes.object,
+};
+
+Home.defaultProps = {
+  currentUser: null,
 };
 
 export default Home;
