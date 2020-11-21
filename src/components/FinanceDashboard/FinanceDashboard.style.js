@@ -6,7 +6,7 @@ export const useStyles = makeStyles(theme => ({
     padding: 0,
     width: '100%',
     '@media only screen and (min-width: 600px)': {
-      padding: theme.customSpacing.base,
+      padding: `0 ${theme.customSpacing.base} ${theme.customSpacing.base}`,
     },
   },
   tabBarAndCardsBlockWrapper: {},
