@@ -8,7 +8,9 @@ import ROUTES from '../../routes';
 
 function FinanceBlock({
   accessToken,
+  dataToShow,
   handleCurrentUser,
+  handleDataToShow,
   handleTabKeyPress,
   handleTabSelect,
   tabList,
@@ -20,7 +22,9 @@ function FinanceBlock({
       return (
         <FinanceDashboard
           accessToken={accessToken}
+          dataToShow={dataToShow}
           handleCurrentUser={handleCurrentUser}
+          handleDataToShow={handleDataToShow}
           handleTabKeyPress={handleTabKeyPress}
           handleTabSelect={handleTabSelect}
           tabList={tabList}
@@ -35,7 +39,9 @@ function FinanceBlock({
 
 FinanceBlock.propTypes = {
   accessToken: PropTypes.string.isRequired,
+  dataToShow: PropTypes.array.isRequired,
   handleCurrentUser: PropTypes.func.isRequired,
+  handleDataToShow: PropTypes.func.isRequired,
   handleTabKeyPress: PropTypes.func.isRequired,
   handleTabSelect: PropTypes.func.isRequired,
   tabList: PropTypes.array.isRequired,

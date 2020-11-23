@@ -19,14 +19,22 @@ function Finance({ accessToken, currentUser, handleCurrentUser }) {
   const { path, url } = useRouteMatch();
   const [fieldNavigationList, setFieldNavigationList] = useState(FIELD_LIST);
   const [tabList, setTabList] = useState(TAB_LIST);
-  const [setAccounts] = useState([]);
+  const [dataToShow, setDataToShow] = useState([]);
+
+  const handleDataToShow = array => {
+    if (Array.isArray(array) && array.length) {
+      setDataToShow(array);
+    } else {
+      setDataToShow([]);
+    }
+  };
 
   const getData = async () => {
     try {
       const response = await API.getAccounts(accessToken);
       const sortedAccounts = await normalizeArray(sortArray(response));
 
-      await setAccounts(sortedAccounts);
+      handleDataToShow(sortedAccounts);
     } catch (e) {
       console.log(e);
     }
@@ -100,7 +108,9 @@ function Finance({ accessToken, currentUser, handleCurrentUser }) {
         <Route exact path={`${path}/:route`}>
           <FinanceBlock
             accessToken={accessToken}
+            dataToShow={dataToShow}
             handleCurrentUser={handleCurrentUser}
+            handleDataToShow={handleDataToShow}
             handleTabKeyPress={handleTabKeyPress}
             handleTabSelect={handleTabSelect}
             tabList={tabList}

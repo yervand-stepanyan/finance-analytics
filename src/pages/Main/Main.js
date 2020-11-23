@@ -45,9 +45,9 @@ function Main() {
       if (accessTokenDataFromLocalStorage && currentUserFromLocalStorage) {
         const user = await API.getCurrentUser(accessToken);
 
-        await setCurrentUser(user);
+        setCurrentUser(user);
 
-        await saveState(LOCAL_STORAGE.currentUser, user);
+        saveState(LOCAL_STORAGE.currentUser, user);
       }
     } catch (e) {
       console.log(e);

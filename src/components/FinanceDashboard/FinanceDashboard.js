@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import API from '../../fetchAPI';
 import CardsBlock from '../CardsBlock';
 import FinanceSettings from '../FinanceSettings';
 import TabBar from '../TabBar';
 import { useStyles } from './FinanceDashboard.style';
-import API from '../../fetchAPI';
 
 function FinanceDashboard({
   accessToken,
+  dataToShow,
   handleCurrentUser,
+  handleDataToShow,
   handleTabKeyPress,
   handleTabSelect,
   tabList,
@@ -28,6 +30,8 @@ function FinanceDashboard({
       setShowSignOutPopup(false);
 
       handleCurrentUser({ user });
+
+      handleDataToShow([]);
     } catch (e) {
       console.log(e);
     }
@@ -46,7 +50,7 @@ function FinanceDashboard({
           handleTabSelect={handleTabSelect}
           tabList={tabList}
         />
-        <CardsBlock />
+        <CardsBlock dataToShow={dataToShow} />
       </div>
     </div>
   );
@@ -54,7 +58,9 @@ function FinanceDashboard({
 
 FinanceDashboard.propTypes = {
   accessToken: PropTypes.string.isRequired,
+  dataToShow: PropTypes.array.isRequired,
   handleCurrentUser: PropTypes.func.isRequired,
+  handleDataToShow: PropTypes.func.isRequired,
   handleTabKeyPress: PropTypes.func.isRequired,
   handleTabSelect: PropTypes.func.isRequired,
   tabList: PropTypes.array.isRequired,
