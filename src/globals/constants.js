@@ -117,7 +117,6 @@ export const LOCAL_STORAGE = {
   accessTokenData: 'accessTokenData',
   currentUser: 'currentUser',
 };
-export const NOT_AVAILABLE = 'N/A';
 export const PROJECT_TITLE = 'Finance Analytics';
 export const QUICKBOOKS_SIGNIN = {
   title: 'You are not Signed In to Quickbooks!',
