@@ -1,6 +1,8 @@
 import API from '../fetchAPI';
 import enterIcon from '../assets/icons/icon-enter-26x26.png';
 import exitIcon from '../assets/icons/icon-exit-26x26.png';
+import finance1 from '../assets/images/finance1-1760x990.png';
+import finance2 from '../assets/images/finance2-1280x719.png';
 import loading from '../assets/images/loading-1280x720.png';
 import logo from '../assets/images/financial-analytics-48x48.png';
 import signIn from '../assets/images/signIn-1760x990.png';
@@ -63,6 +65,14 @@ export const ICON = {
   },
 };
 export const IMAGE = {
+  finance1: {
+    src: finance1,
+    title: 'Finance image',
+  },
+  finance2: {
+    src: finance2,
+    title: 'Finance image',
+  },
   loading: {
     src: loading,
     title: 'Loading image',
@@ -79,6 +89,14 @@ export const IMAGE = {
     src: signUp,
     title: 'Sign Up image',
   },
+};
+export const HOME = {
+  title: 'Single sign on implementation',
+  section1:
+    'Single Sign On authentication method is demonstrated in this Web application.',
+  section2:
+    'Finance Analytics is an application where signed in user can connect to his/her account in Quickbooks and get all needed data from there.',
+  section3: 'Sign in or Sign up to enter the Finance dashboard.',
 };
 export const LOADER = {
   button: {
