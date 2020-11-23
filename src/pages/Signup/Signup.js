@@ -22,12 +22,15 @@ import {
   SNACKBAR,
 } from '../../globals/constants';
 import Loader from '../../components/Loader';
+import normalizeString from '../../helpers/normalizeString';
 import ROUTES from '../../routes';
 import { useStyles } from './Signup.style';
+import validatePassword from '../../helpers/validatePassword';
 
 function Signup({ handleOpenSnackbar, handleSnackbarContent }) {
   const classes = useStyles();
   const history = useHistory();
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -38,7 +41,14 @@ function Signup({ handleOpenSnackbar, handleSnackbarContent }) {
   };
 
   const handlePasswordChange = event => {
-    setPassword(event.target.value);
+    const passwordValue = event.target.value;
+    setPassword(passwordValue);
+
+    if (validatePassword(passwordValue)) {
+      setIsPasswordValid(true);
+    } else {
+      setIsPasswordValid(false);
+    }
   };
 
   const handleClickShowPassword = () => {
@@ -50,7 +60,8 @@ function Signup({ handleOpenSnackbar, handleSnackbarContent }) {
       setLoading(true);
 
       const routeToRedirect = ROUTES.signin;
-      const newUser = { username, password };
+      const normalizedUsername = normalizeString(username);
+      const newUser = { username: normalizedUsername, password };
       const response = await API.postUser(newUser);
 
       if (response.username) {
@@ -75,7 +86,7 @@ function Signup({ handleOpenSnackbar, handleSnackbarContent }) {
 
   const handleSubmitOnEnter = async event => {
     if (event.key === 'Enter') {
-      if (username && password) {
+      if (username && isPasswordValid) {
         await handleSingUp();
       }
     }
@@ -108,6 +119,7 @@ function Signup({ handleOpenSnackbar, handleSnackbarContent }) {
             </div>
             <div className={classes.passwordWrapper}>
               <TextField
+                error={!!password && !isPasswordValid}
                 fullWidth
                 id="input-for-password"
                 InputProps={{
@@ -137,7 +149,7 @@ function Signup({ handleOpenSnackbar, handleSnackbarContent }) {
             <div className={classes.buttonWrapper}>
               <Button
                 color="primary"
-                disabled={loading || !username || !password}
+                disabled={loading || !username || !password || !isPasswordValid}
                 fullWidth
                 onClick={handleSingUp}
                 variant="contained"
