@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-// import API from '../../fetchAPI';
 import {
   FIELD_LIST,
   GET_DATA_TYPE,
@@ -126,7 +125,10 @@ function Finance({ accessToken, currentUser, handleCurrentUser }) {
             tabList={tabList}
           />
         </Route>
-        <Route exact path={`${path}/:route/callback`}>
+        <Route
+          exact
+          path={`${path}/${ROUTES.financeSignin}/${ROUTES.financeCallback}`}
+        >
           <FinanceCallback />
         </Route>
       </Switch>
