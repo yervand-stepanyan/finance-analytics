@@ -2,16 +2,17 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles({
   buttonProgress: {
+    left: '50%',
+    marginLeft: -12,
+    marginTop: -12,
     position: 'absolute',
     top: '50%',
-    left: '50%',
-    marginTop: -12,
-    marginLeft: -12,
   },
   pageLoaderContainer: {
-    textAlign: 'center',
-    marginTop: '30vh',
+    display: 'flex',
+    alignItems: 'center',
     minHeight: 200,
+    textAlign: 'center',
   },
   imageLoaderContainer: {
     display: 'flex',

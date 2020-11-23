@@ -13,6 +13,7 @@ function FinanceBlock({
   handleDataToShow,
   handleTabKeyPress,
   handleTabSelect,
+  isLoading,
   tabList,
 }) {
   const { route } = useParams();
@@ -27,6 +28,7 @@ function FinanceBlock({
           handleDataToShow={handleDataToShow}
           handleTabKeyPress={handleTabKeyPress}
           handleTabSelect={handleTabSelect}
+          isLoading={isLoading}
           tabList={tabList}
         />
       );
@@ -44,6 +46,7 @@ FinanceBlock.propTypes = {
   handleDataToShow: PropTypes.func.isRequired,
   handleTabKeyPress: PropTypes.func.isRequired,
   handleTabSelect: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   tabList: PropTypes.array.isRequired,
 };
 

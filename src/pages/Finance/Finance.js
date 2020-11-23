@@ -7,9 +7,7 @@ import { FIELD_LIST, LOADER, TAB_LIST } from '../../globals/constants';
 import FieldNavigation from '../../components/FieldNavigation';
 import FinanceBlock from '../../components/FinanceBlock';
 import Loader from '../../components/Loader';
-import { normalizeArray } from '../../helpers/normalizeArray';
 import ROUTES from '../../routes';
-import { sortArray } from '../../helpers/sortArray';
 import { useStyles } from './Finance.style';
 import FinanceCallback from '../../components/FinanceCallback';
 
@@ -17,9 +15,10 @@ function Finance({ accessToken, currentUser, handleCurrentUser }) {
   const classes = useStyles();
   const history = useHistory();
   const { path, url } = useRouteMatch();
-  const [fieldNavigationList, setFieldNavigationList] = useState(FIELD_LIST);
-  const [tabList, setTabList] = useState(TAB_LIST);
   const [dataToShow, setDataToShow] = useState([]);
+  const [fieldNavigationList, setFieldNavigationList] = useState(FIELD_LIST);
+  const [isLoading, setIsLoading] = useState(true);
+  const [tabList, setTabList] = useState(TAB_LIST);
 
   const handleDataToShow = array => {
     if (Array.isArray(array) && array.length) {
@@ -31,12 +30,15 @@ function Finance({ accessToken, currentUser, handleCurrentUser }) {
 
   const getData = async () => {
     try {
-      const response = await API.getAccounts(accessToken);
-      const sortedAccounts = await normalizeArray(sortArray(response));
+      setIsLoading(true);
 
-      handleDataToShow(sortedAccounts);
+      const response = await API.getAccounts(accessToken);
+
+      handleDataToShow(response);
     } catch (e) {
-      console.log(e);
+      setIsLoading(false);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -113,6 +115,7 @@ function Finance({ accessToken, currentUser, handleCurrentUser }) {
             handleDataToShow={handleDataToShow}
             handleTabKeyPress={handleTabKeyPress}
             handleTabSelect={handleTabSelect}
+            isLoading={isLoading}
             tabList={tabList}
           />
         </Route>

@@ -9,5 +9,7 @@ export const useStyles = makeStyles(theme => ({
       padding: `0 ${theme.customSpacing.base} ${theme.customSpacing.base}`,
     },
   },
-  tabBarAndCardsBlockWrapper: {},
+  tabBarAndCardsBlockWrapper: {
+    minHeight: '60vh',
+  },
 }));

@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core';
 
-const CARD_WIDTH = 450;
+const CARD_WIDTH = 300;
 const FIELD_ITEM_HEIGHT_LARGE_SCREEN = 72;
 const FIELD_ITEM_LENGTH = 48;
 const FIELD_ITEM_THICKNESS = 8;

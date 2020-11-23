@@ -14,6 +14,7 @@ function FinanceDashboard({
   handleDataToShow,
   handleTabKeyPress,
   handleTabSelect,
+  isLoading,
   tabList,
 }) {
   const classes = useStyles();
@@ -50,7 +51,7 @@ function FinanceDashboard({
           handleTabSelect={handleTabSelect}
           tabList={tabList}
         />
-        <CardsBlock dataToShow={dataToShow} />
+        <CardsBlock dataToShow={dataToShow} isLoading={isLoading} />
       </div>
     </div>
   );
@@ -63,6 +64,7 @@ FinanceDashboard.propTypes = {
   handleDataToShow: PropTypes.func.isRequired,
   handleTabKeyPress: PropTypes.func.isRequired,
   handleTabSelect: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   tabList: PropTypes.array.isRequired,
 };
 

@@ -11,30 +11,30 @@ import { useStyles } from './DataCard.style';
 
 function DataCard({ dataObject }) {
   const classes = useStyles();
-
-  const keyNames = Object.keys(normalizeObject(dataObject));
-  const valueData = Object.values(normalizeObject(dataObject));
+  const normalizedObject = normalizeObject(dataObject);
+  const keys = Object.keys(normalizedObject);
+  const values = Object.values(normalizedObject);
+  const rows = keys.map((key, index) => ({
+    key,
+    value: values[index],
+  }));
 
   return (
     <Card className={classes.dataCardContainer}>
       <CardContent>
-        <div className={classes.contentWrapper}>
-          <div>
-            {keyNames.map(keyName => (
-              <div key={keyName}>
+        <div>
+          {rows.map(({ key, value }) => (
+            <div className={classes.rowDataWrapper} key={key}>
+              <div>
                 <Typography color="textSecondary" variant="subtitle1">
-                  {ACCOUNT_OPTION[keyName]}
+                  {ACCOUNT_OPTION[key]}
                 </Typography>
               </div>
-            ))}
-          </div>
-          <div className={classes.valueContentWrapper}>
-            {valueData.map((value, index) => (
-              <div key={keyNames[index]}>
+              <div className={classes.valueDataWrapper}>
                 <Typography variant="subtitle1">{value}</Typography>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </CardContent>
     </Card>

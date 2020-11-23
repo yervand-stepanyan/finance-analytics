@@ -7,6 +7,7 @@ export const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     backgroundColor: theme.color.tabBarBackgroundColor,
     marginTop: theme.customSpacing.base,
+    minHeight: 'inherit',
     padding: theme.customSpacing.small,
     '@media only screen and (min-width: 600px)': {
       borderRadius: theme.border.borderRadius,

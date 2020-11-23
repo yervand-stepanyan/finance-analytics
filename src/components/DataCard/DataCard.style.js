@@ -4,12 +4,12 @@ export const useStyles = makeStyles(theme => ({
   dataCardContainer: {
     backgroundColor: theme.color.cardBackgroundColor,
     margin: theme.customSpacing.small,
-    minWidth: theme.size.cardWidth,
+    width: theme.size.cardWidth,
   },
-  contentWrapper: {
+  rowDataWrapper: {
     display: 'flex',
   },
-  valueContentWrapper: {
+  valueDataWrapper: {
     marginLeft: theme.customSpacing.base,
   },
 }));
