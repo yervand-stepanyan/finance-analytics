@@ -7,28 +7,12 @@ import signInIcon from '../assets/icons/icon-signin-24x24.png';
 import signOutIcon from '../assets/icons/icon-signout-24x24.png';
 import signUp from '../assets/images/signup-1760x990.png';
 
-export const ACCOUNT_OPTIONS = [
-  {
-    name: 'classification',
-    title: 'Classification',
-  },
-  {
-    name: 'currentBalance',
-    title: 'Current Balance',
-  },
-  {
-    name: 'id',
-    title: 'Id',
-  },
-  {
-    name: 'name',
-    title: 'Name',
-  },
-  {
-    name: 'type',
-    title: 'Type',
-  },
-];
+export const ACCOUNT_OPTION = {
+  classification: 'Classification:',
+  currentBalance: 'Current Balance:',
+  name: 'Name:',
+  type: 'Type:',
+};
 export const BUTTON_LABEL = {
   quickbooksSignIn: 'Single Sign On',
   quickbooksSignOut: 'Sign Out',

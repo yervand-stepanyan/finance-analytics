@@ -1,32 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import { useStyles } from './CardsBlock.style';
 import DataCard from '../DataCard';
+import { useStyles } from './CardsBlock.style';
 
-function CardsBlock() {
-  const cardData = [
-    {
-      salary: '10000',
-      user: 'a@a.ru',
-    },
-    {
-      salary: '5000',
-      user: 'b@b.ru',
-    },
-    {
-      salary: '7000',
-      user: 'c@c.ru',
-    },
-  ];
+function CardsBlock({ dataToShow }) {
   const classes = useStyles();
 
   return (
     <div className={classes.cardsBlockContainer}>
-      {cardData.map(({ salary, user }) => (
-        <DataCard key={user} salary={salary} user={user} />
+      {dataToShow.map(dataObject => (
+        <DataCard key={dataObject.id} dataObject={dataObject} />
       ))}
     </div>
   );
 }
+
+CardsBlock.propTypes = {
+  dataToShow: PropTypes.array.isRequired,
+};
 
 export default CardsBlock;

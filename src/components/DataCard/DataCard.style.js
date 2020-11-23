@@ -5,6 +5,11 @@ export const useStyles = makeStyles(theme => ({
     backgroundColor: theme.color.cardBackgroundColor,
     margin: theme.customSpacing.small,
     minWidth: theme.size.cardWidth,
-    textAlign: 'center',
+  },
+  contentWrapper: {
+    display: 'flex',
+  },
+  valueContentWrapper: {
+    marginLeft: theme.customSpacing.base,
   },
 }));
