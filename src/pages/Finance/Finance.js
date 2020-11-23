@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import API from '../../fetchAPI';
-import { FIELD_LIST, LOADER, TAB_LIST } from '../../globals/constants';
+// import API from '../../fetchAPI';
+import {
+  FIELD_LIST,
+  GET_DATA_TYPE,
+  LOADER,
+  TAB_LIST,
+} from '../../globals/constants';
 import FieldNavigation from '../../components/FieldNavigation';
 import FinanceBlock from '../../components/FinanceBlock';
 import Loader from '../../components/Loader';
@@ -28,11 +33,11 @@ function Finance({ accessToken, currentUser, handleCurrentUser }) {
     }
   };
 
-  const getData = async () => {
+  const getData = async type => {
     try {
       setIsLoading(true);
 
-      const response = await API.getAccounts(accessToken);
+      const response = await GET_DATA_TYPE[type](accessToken);
 
       handleDataToShow(response);
     } catch (e) {
@@ -44,7 +49,7 @@ function Finance({ accessToken, currentUser, handleCurrentUser }) {
 
   useEffect(() => {
     if (currentUser.quickBooks) {
-      getData();
+      getData(tabList[0].title);
 
       history.push(`${url}/${ROUTES.financeDashboard}`);
     } else {
@@ -88,6 +93,8 @@ function Finance({ accessToken, currentUser, handleCurrentUser }) {
     );
 
     setTabList(newTabList);
+
+    getData(title);
   };
 
   const handleTabKeyPress = event => {

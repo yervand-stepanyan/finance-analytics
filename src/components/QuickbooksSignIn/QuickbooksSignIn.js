@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 
-import { BUTTON_LABEL, QUICKBOOKS_SIGNIN } from '../../globals/constants';
+import { BUTTON_LABEL, ICON, QUICKBOOKS_SIGNIN } from '../../globals/constants';
 import { useStyles } from './QuickbooksSignIn.style';
 
-function QuickbooksSignIn({ handleQuickbooksSignIn }) {
+function QuickbooksSignIn({ accessToken }) {
   const classes = useStyles();
 
   return (
@@ -21,21 +22,45 @@ function QuickbooksSignIn({ handleQuickbooksSignIn }) {
         </div>
       </div>
       <div className={classes.buttonWrapper}>
-        <Button
-          color="primary"
-          onClick={handleQuickbooksSignIn}
-          size="large"
-          variant="contained"
+        <form
+          action="https://finance-analytics-api.herokuapp.com/api/v1/finances/quick-books"
+          method="post"
         >
-          {BUTTON_LABEL.quickbooksSignIn}
-        </Button>
+          <input
+            type="hidden"
+            name="authorization"
+            value={`Bearer ${accessToken}`}
+          />
+          <input
+            type="hidden"
+            name="redirectUri"
+            value="http://localhost:3000/finance/signin/callback"
+          />
+          <Button
+            color="primary"
+            endIcon={(
+              <Icon>
+                <img
+                  alt={ICON.enter.title}
+                  className={classes.buttonIconImage}
+                  src={ICON.enter.src}
+                />
+              </Icon>
+            )}
+            size="large"
+            type="submit"
+            variant="contained"
+          >
+            {BUTTON_LABEL.quickbooksSignIn}
+          </Button>
+        </form>
       </div>
     </div>
   );
 }
 
 QuickbooksSignIn.propTypes = {
-  handleQuickbooksSignIn: PropTypes.func.isRequired,
+  accessToken: PropTypes.string.isRequired,
 };
 
 export default QuickbooksSignIn;

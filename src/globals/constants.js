@@ -1,3 +1,4 @@
+import API from '../fetchAPI';
 import enterIcon from '../assets/icons/icon-enter-26x26.png';
 import exitIcon from '../assets/icons/icon-exit-26x26.png';
 import loading from '../assets/images/loading-1280x720.png';
@@ -8,6 +9,7 @@ import signOutIcon from '../assets/icons/icon-signout-24x24.png';
 import signUp from '../assets/images/signup-1760x990.png';
 
 export const ACCOUNT_OPTION = {
+  balance: 'Balance:',
   classification: 'Classification:',
   currentBalance: 'Current Balance:',
   name: 'Name:',
@@ -19,6 +21,12 @@ export const BUTTON_LABEL = {
   signIn: 'Sign In',
   signOut: 'Sign Out',
   signUp: 'Sign Up',
+};
+export const GET_DATA_TYPE = {
+  Accounts: accessToken => API.getAccounts(accessToken),
+  Customers: accessToken => API.getCustomers(accessToken),
+  Payments: accessToken => API.getPayments(accessToken),
+  Invoices: accessToken => API.getInvoices(accessToken),
 };
 export const FIELD_LIST = [
   {

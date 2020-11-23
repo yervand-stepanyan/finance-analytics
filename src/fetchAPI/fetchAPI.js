@@ -79,23 +79,6 @@ async function deleteQuickbooks({ url, method, accessToken }) {
   return response.json();
 }
 
-async function requestQuickbooks({ url, method, accessToken }) {
-  const fetchOptions = {
-    body: JSON.stringify({
-      authorization: `Bearer ${accessToken}`,
-      redirectUri: 'http://localhost:9000',
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    method,
-  };
-
-  const response = await fetch(url, fetchOptions);
-
-  return response.json();
-}
-
 const API = {
   getAccounts: accessToken =>
     requestData({
@@ -125,12 +108,6 @@ const API = {
     requestData({
       uri: '/payments',
       method: 'GET',
-      accessToken,
-    }),
-  postQuickbooks: accessToken =>
-    requestQuickbooks({
-      url: quickbooksURL,
-      method: 'POST',
       accessToken,
     }),
   postToken: body =>

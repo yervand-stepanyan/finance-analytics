@@ -45,9 +45,14 @@ function Main() {
       if (accessTokenDataFromLocalStorage && currentUserFromLocalStorage) {
         const user = await API.getCurrentUser(accessToken);
 
-        setCurrentUser(user);
+        if (user.username) {
+          setCurrentUser(user);
 
-        saveState(LOCAL_STORAGE.currentUser, user);
+          saveState(LOCAL_STORAGE.currentUser, user);
+        } else {
+          localStorage.removeItem(LOCAL_STORAGE.accessTokenData);
+          localStorage.removeItem(LOCAL_STORAGE.currentUser);
+        }
       }
     } catch (e) {
       console.log(e);

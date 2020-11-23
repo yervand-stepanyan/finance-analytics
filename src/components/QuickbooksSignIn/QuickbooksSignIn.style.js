@@ -20,6 +20,7 @@ export const useStyles = makeStyles(theme => ({
   },
   buttonWrapper: {
     marginTop: theme.customSpacing.xLarge,
+    position: 'relative',
   },
   buttonIconImage: {
     height: 'inherit',
