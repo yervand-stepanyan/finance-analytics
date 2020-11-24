@@ -148,6 +148,7 @@ export const SIGN_UP_SECTION = {
 };
 export const SNACKBAR = {
   message: {
+    sessionExpired: 'Session has expired! Please, Sign in again.',
     signUpSuccess: 'Signed up successfully! Sign In now to continue!',
   },
   props: {
