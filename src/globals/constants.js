@@ -11,10 +11,15 @@ import signOutIcon from '../assets/icons/icon-signout-24x24.png';
 import signUp from '../assets/images/signup-1760x990.png';
 
 export const ACCOUNT_OPTION = {
+  amount: 'Amount:',
   balance: 'Balance:',
   classification: 'Classification:',
   currentBalance: 'Current Balance:',
+  date: 'Date:',
+  dueDate: 'Due date:',
+  documentNumber: 'Document number:',
   name: 'Name:',
+  totalAmount: 'Total amount:',
   type: 'Type:',
 };
 export const BUTTON_LABEL = {
