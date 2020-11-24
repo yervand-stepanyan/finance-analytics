@@ -13,7 +13,7 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Home from '../Home';
 import { loadState, saveState } from '../../helpers/localStorage';
-import { LOCAL_STORAGE } from '../../globals/constants';
+import { LOCAL_STORAGE, SNACKBAR } from '../../globals/constants';
 import ProtectedRoute from '../../components/ProtectedRoute';
 import ROUTES from '../../routes';
 import ScrollToTop from '../../components/ScrollToTop';
@@ -60,12 +60,26 @@ function Main() {
     }
   };
 
+  const handleSnackbarContent = (isSuccess, text) => {
+    setIsSnackbarSuccess(isSuccess);
+
+    setSnackbarText(text);
+  };
+
+  const handleOpenSnackbar = () => {
+    setOpenSnackbar(true);
+  };
+
   useEffect(() => {
     const isTokenValid = checkTokenIsValid(accessTokenExpiresAt);
 
     if (isTokenValid) {
       getUserData();
     } else {
+      if (currentUser) {
+        handleSnackbarContent(false, SNACKBAR.message.sessionExpired);
+        handleOpenSnackbar();
+      }
       setCurrentUser(null);
       setAccessTokenData(null);
 
@@ -125,16 +139,6 @@ function Main() {
     handleOpenUserMenu(false);
 
     handleOpenMobileMenu(false);
-  };
-
-  const handleOpenSnackbar = () => {
-    setOpenSnackbar(true);
-  };
-
-  const handleSnackbarContent = (isSuccess, text) => {
-    setIsSnackbarSuccess(isSuccess);
-
-    setSnackbarText(text);
   };
 
   const handleClose = (event, reason) => {
