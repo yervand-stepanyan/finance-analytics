@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import API from '../../fetchAPI';
+import { checkTokenIsValid } from '../../helpers/checkTokenIsValid';
 import Finance from '../Finance';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -29,7 +30,7 @@ function Main() {
   const [accessTokenData, setAccessTokenData] = useState(
     accessTokenDataFromLocalStorage || null
   );
-  const { accessToken } = accessTokenData || '';
+  const { accessToken, accessTokenExpiresAt } = accessTokenData || '';
   const currentUserFromLocalStorage = loadState(LOCAL_STORAGE.currentUser);
   const [currentUser, setCurrentUser] = useState(
     currentUserFromLocalStorage || null
@@ -60,7 +61,17 @@ function Main() {
   };
 
   useEffect(() => {
-    getUserData();
+    const isTokenValid = checkTokenIsValid(accessTokenExpiresAt);
+
+    if (isTokenValid) {
+      getUserData();
+    } else {
+      setCurrentUser(null);
+      setAccessTokenData(null);
+
+      localStorage.removeItem(LOCAL_STORAGE.accessTokenData);
+      localStorage.removeItem(LOCAL_STORAGE.currentUser);
+    }
   }, []);
 
   const handleOpenMobileMenu = isOpen => {
