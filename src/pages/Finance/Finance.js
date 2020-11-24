@@ -104,6 +104,12 @@ function Finance({ accessToken, currentUser, handleCurrentUser }) {
   };
 
   const handleTabSelect = title => {
+    const selectedTabTitle = tabList.find(tab => tab.checked).title;
+
+    if (title === selectedTabTitle) {
+      return;
+    }
+
     const newTabList = tabList.map(tab =>
       tab.title === title
         ? {
