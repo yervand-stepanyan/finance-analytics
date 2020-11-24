@@ -33,6 +33,7 @@ export const useStyles = makeStyles(theme => ({
   },
   checkedTab: {
     color: theme.color.titleTextColor,
+    cursor: 'default',
     borderBottom: `${theme.border.tabBorder.size} solid ${theme.color.primaryColor}`,
   },
 }));
