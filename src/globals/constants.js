@@ -121,6 +121,7 @@ export const LOADER = {
 export const LOCAL_STORAGE = {
   accessTokenData: 'accessTokenData',
   currentUser: 'currentUser',
+  selectedTab: 'selectedTab',
 };
 export const PROJECT_TITLE = 'Finance Analytics';
 export const QUICKBOOKS_SIGNIN = {

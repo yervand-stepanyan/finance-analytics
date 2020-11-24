@@ -26,11 +26,11 @@ function Main() {
   const accessTokenDataFromLocalStorage = loadState(
     LOCAL_STORAGE.accessTokenData
   );
-  const currentUserFromLocalStorage = loadState(LOCAL_STORAGE.currentUser);
   const [accessTokenData, setAccessTokenData] = useState(
     accessTokenDataFromLocalStorage || null
   );
   const { accessToken } = accessTokenData || '';
+  const currentUserFromLocalStorage = loadState(LOCAL_STORAGE.currentUser);
   const [currentUser, setCurrentUser] = useState(
     currentUserFromLocalStorage || null
   );

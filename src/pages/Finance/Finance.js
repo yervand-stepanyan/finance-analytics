@@ -6,14 +6,16 @@ import {
   FIELD_LIST,
   GET_DATA_TYPE,
   LOADER,
+  LOCAL_STORAGE,
   TAB_LIST,
 } from '../../globals/constants';
 import FieldNavigation from '../../components/FieldNavigation';
 import FinanceBlock from '../../components/FinanceBlock';
+import FinanceCallback from '../../components/FinanceCallback';
 import Loader from '../../components/Loader';
+import { loadState, saveState } from '../../helpers/localStorage';
 import ROUTES from '../../routes';
 import { useStyles } from './Finance.style';
-import FinanceCallback from '../../components/FinanceCallback';
 
 function Finance({ accessToken, currentUser, handleCurrentUser }) {
   const classes = useStyles();
@@ -22,7 +24,21 @@ function Finance({ accessToken, currentUser, handleCurrentUser }) {
   const [dataToShow, setDataToShow] = useState([]);
   const [fieldNavigationList, setFieldNavigationList] = useState(FIELD_LIST);
   const [isLoading, setIsLoading] = useState(true);
-  const [tabList, setTabList] = useState(TAB_LIST);
+  const tabFromLocalStorage = loadState(LOCAL_STORAGE.selectedTab);
+  const tabListToDisplay = tabFromLocalStorage
+    ? TAB_LIST.map(tab =>
+        tab.title === tabFromLocalStorage
+          ? {
+              ...tab,
+              checked: true,
+            }
+          : {
+              ...tab,
+              checked: false,
+            }
+      )
+    : TAB_LIST;
+  const [tabList, setTabList] = useState(tabListToDisplay);
 
   const handleDataToShow = array => {
     if (Array.isArray(array) && array.length) {
@@ -49,12 +65,20 @@ function Finance({ accessToken, currentUser, handleCurrentUser }) {
   useEffect(() => {
     if (currentUser.quickBooks) {
       const selectedTab = tabList.find(tab => tab.checked);
-      getData(selectedTab.title);
+      const { title } = selectedTab;
+
+      getData(title);
+
+      saveState(LOCAL_STORAGE.selectedTab, title);
 
       history.push(`${url}/${ROUTES.financeDashboard}`);
     } else {
       history.push(`${url}/${ROUTES.financeSignin}`);
     }
+
+    return () => {
+      localStorage.removeItem(LOCAL_STORAGE.selectedTab);
+    };
   }, [currentUser]);
 
   const handleFieldSelect = title => {
@@ -93,6 +117,8 @@ function Finance({ accessToken, currentUser, handleCurrentUser }) {
     );
 
     setTabList(newTabList);
+
+    saveState(LOCAL_STORAGE.selectedTab, title);
 
     getData(title);
   };
