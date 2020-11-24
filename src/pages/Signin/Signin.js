@@ -19,6 +19,7 @@ import {
   IMAGE,
   LOADER,
   SIGN_IN_SECTION,
+  SNACKBAR,
 } from '../../globals/constants';
 import Loader from '../../components/Loader';
 import normalizeString from '../../helpers/normalizeString';
@@ -26,7 +27,11 @@ import ROUTES from '../../routes';
 import { useStyles } from './Signin.style';
 import validatePassword from '../../helpers/validatePassword';
 
-function Signin({ handleCurrentUser }) {
+function Signin({
+  handleCurrentUser,
+  handleOpenSnackbar,
+  handleSnackbarContent,
+}) {
   const classes = useStyles();
   const history = useHistory();
   const [isPasswordValid, setIsPasswordValid] = useState(false);
@@ -62,18 +67,24 @@ function Signin({ handleCurrentUser }) {
       const normalizedUsername = normalizeString(username);
       const userToSignIn = { username: normalizedUsername, password };
       const response = await API.postToken(userToSignIn);
-      const accessTokenData = {
-        accessToken: response.accessToken,
-        accessTokenExpiresAt: response.accessTokenExpiresAt,
-      };
-      const user = await API.getCurrentUser(accessTokenData.accessToken);
 
-      if (user.username) {
-        handleCurrentUser({ accessTokenData, user });
+      if (response.user) {
+        const accessTokenData = {
+          accessToken: response.accessToken,
+          accessTokenExpiresAt: response.accessTokenExpiresAt,
+        };
+        const user = await API.getCurrentUser(accessTokenData.accessToken);
 
-        setTimeout(() => {
-          history.push(routeToRedirect);
-        });
+        if (user.username) {
+          handleCurrentUser({ accessTokenData, user });
+
+          setTimeout(() => {
+            history.push(routeToRedirect);
+          });
+        }
+      } else {
+        handleSnackbarContent(false, SNACKBAR.message.incorrectCredentials);
+        handleOpenSnackbar();
       }
     } catch (e) {
       setLoading(false);
@@ -192,6 +203,8 @@ function Signin({ handleCurrentUser }) {
 
 Signin.propTypes = {
   handleCurrentUser: PropTypes.func.isRequired,
+  handleOpenSnackbar: PropTypes.func.isRequired,
+  handleSnackbarContent: PropTypes.func.isRequired,
 };
 
 export default Signin;

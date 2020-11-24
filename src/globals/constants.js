@@ -148,6 +148,7 @@ export const SIGN_UP_SECTION = {
 };
 export const SNACKBAR = {
   message: {
+    incorrectCredentials: 'Incorrect credentials or not Signed up yet!',
     sessionExpired: 'Session has expired! Please, Sign in again.',
     signUpSuccess: 'Signed up successfully! Sign In now to continue!',
   },

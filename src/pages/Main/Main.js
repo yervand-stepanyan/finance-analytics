@@ -168,7 +168,11 @@ function Main() {
               <Home currentUser={currentUser} />
             </Route>
             <Route path={ROUTES.signin}>
-              <Signin handleCurrentUser={handleCurrentUser} />
+              <Signin
+                handleCurrentUser={handleCurrentUser}
+                handleOpenSnackbar={handleOpenSnackbar}
+                handleSnackbarContent={handleSnackbarContent}
+              />
             </Route>
             <Route path={ROUTES.signup}>
               <Signup
