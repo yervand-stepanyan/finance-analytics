@@ -1,9 +1,9 @@
-const key = 'id';
+const propertyToDelete = 'id';
 
 export const normalizeObject = object => {
-  if (key in object) {
+  if (propertyToDelete in object) {
     const newObject = { ...object };
-    delete newObject[key];
+    delete newObject[propertyToDelete];
 
     return newObject;
   }
