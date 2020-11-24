@@ -48,7 +48,8 @@ function Finance({ accessToken, currentUser, handleCurrentUser }) {
 
   useEffect(() => {
     if (currentUser.quickBooks) {
-      getData(tabList[0].title);
+      const selectedTab = tabList.find(tab => tab.checked);
+      getData(selectedTab.title);
 
       history.push(`${url}/${ROUTES.financeDashboard}`);
     } else {
