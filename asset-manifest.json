@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/finance-analytics/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/finance-analytics/static/js/main.b57dca4c.chunk.js",
+    "main.js.map": "/finance-analytics/static/js/main.b57dca4c.chunk.js.map",
+    "runtime-main.js": "/finance-analytics/static/js/runtime-main.be714996.js",
+    "runtime-main.js.map": "/finance-analytics/static/js/runtime-main.be714996.js.map",
+    "static/js/2.685d6183.chunk.js": "/finance-analytics/static/js/2.685d6183.chunk.js",
+    "static/js/2.685d6183.chunk.js.map": "/finance-analytics/static/js/2.685d6183.chunk.js.map",
+    "static/js/3.dd5f65d6.chunk.js": "/finance-analytics/static/js/3.dd5f65d6.chunk.js",
+    "static/js/3.dd5f65d6.chunk.js.map": "/finance-analytics/static/js/3.dd5f65d6.chunk.js.map",
+    "index.html": "/finance-analytics/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/finance-analytics/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.685d6183.chunk.js.LICENSE.txt": "/finance-analytics/static/js/2.685d6183.chunk.js.LICENSE.txt",
+    "static/media/finance1-1760x990.4fb25060.png": "/finance-analytics/static/media/finance1-1760x990.4fb25060.png",
+    "static/media/finance2-1280x719.970edc16.png": "/finance-analytics/static/media/finance2-1280x719.970edc16.png",
+    "static/media/loading-1280x720.213931e5.png": "/finance-analytics/static/media/loading-1280x720.213931e5.png",
+    "static/media/signIn-1760x990.841060c4.png": "/finance-analytics/static/media/signIn-1760x990.841060c4.png",
+    "static/media/signup-1760x990.d51b8148.png": "/finance-analytics/static/media/signup-1760x990.d51b8148.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.be714996.js",
+    "static/js/2.685d6183.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.b57dca4c.chunk.js"
+  ]
+}
