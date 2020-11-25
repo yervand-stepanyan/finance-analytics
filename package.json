@@ -2,6 +2,7 @@
   "name": "finance-analytics",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://yervand-stepanyan.github.io/finance-analytics",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -22,6 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "lint-no-fix": "eslint src",
     "lint-fix": "eslint src --fix"
   },
@@ -51,6 +54,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "gh-pages": "^3.1.0",
     "prettier": "2.1.2"
   }
 }
