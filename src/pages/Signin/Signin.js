@@ -25,6 +25,7 @@ import Loader from '../../components/Loader';
 import normalizeString from '../../helpers/normalizeString';
 import ROUTES from '../../routes';
 import { useStyles } from './Signin.style';
+import validateEmail from '../../helpers/validateEmail';
 import validatePassword from '../../helpers/validatePassword';
 
 function Signin({
@@ -34,6 +35,7 @@ function Signin({
 }) {
   const classes = useStyles();
   const history = useHistory();
+  const [isEmailValid, setIsEmailValid] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState('');
@@ -41,14 +43,21 @@ function Signin({
   const [username, setUsername] = useState('');
 
   const handleUsernameChange = event => {
-    setUsername(event.target.value);
+    const { value } = event.target;
+    setUsername(value);
+
+    if (validateEmail(value)) {
+      setIsEmailValid(true);
+    } else {
+      setIsEmailValid(false);
+    }
   };
 
   const handlePasswordChange = event => {
-    const passwordValue = event.target.value;
-    setPassword(passwordValue);
+    const { value } = event.target;
+    setPassword(value);
 
-    if (validatePassword(passwordValue)) {
+    if (validatePassword(value)) {
       setIsPasswordValid(true);
     } else {
       setIsPasswordValid(false);
@@ -99,7 +108,7 @@ function Signin({
 
   const handleSubmitOnEnter = async event => {
     if (event.key === 'Enter') {
-      if (username && isPasswordValid) {
+      if (isEmailValid && isPasswordValid) {
         await handleSignIn();
       }
     }
@@ -115,6 +124,7 @@ function Signin({
             </div>
             <div className={classes.usernameWrapper}>
               <TextField
+                error={!!username && !isEmailValid}
                 fullWidth
                 id="input-for-username"
                 InputProps={{
@@ -162,7 +172,13 @@ function Signin({
             <div className={classes.buttonWrapper}>
               <Button
                 color="primary"
-                disabled={loading || !username || !password || !isPasswordValid}
+                disabled={
+                  loading ||
+                  !username ||
+                  !password ||
+                  !isEmailValid ||
+                  !isPasswordValid
+                }
                 fullWidth
                 onClick={handleSignIn}
                 variant="contained"
