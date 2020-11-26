@@ -96,11 +96,11 @@ export const IMAGE = {
   },
 };
 export const HOME = {
-  title: 'Single sign on implementation',
+  title: 'Single Sign On implementation',
   section1:
     'Single Sign On authentication method is demonstrated in this Web application.',
   section2:
-    'Finance Analytics is an application where signed in user can connect to his/her account in Quickbooks and get all needed data from there.',
+    'Finance Analytics is an application where signed in user can connect to his/her account in QuickBooks and get all needed data from there.',
   section3: 'Sign in or Sign up to enter the Finance dashboard.',
 };
 export const LOADER = {
@@ -125,7 +125,7 @@ export const LOCAL_STORAGE = {
 };
 export const PROJECT_TITLE = 'Finance Analytics';
 export const QUICKBOOKS_SIGNIN = {
-  title: 'You are not Signed In to Quickbooks!',
+  title: 'You are not Signed In to QuickBooks!',
   subtitle: 'Press the button to complete Single Sign On and to see the data.',
 };
 export const SIGN_IN_SECTION = {
