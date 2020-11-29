@@ -27,9 +27,7 @@ function TooltipIconComponent({
       {isError ? (
         <div className={classes.iconWrapper}>
           <Tooltip
-            arrow
             classes={{
-              arrow: classes.errorIconArrow,
               tooltip: classes.errorIconTooltip,
             }}
             open={openErrorTooltip}
@@ -52,10 +50,8 @@ function TooltipIconComponent({
             <CheckCircleIcon className={classes.checkIcon} />
           ) : (
             <Tooltip
-              arrow
               color="primary"
               classes={{
-                arrow: classes.infoIconArrow,
                 tooltip: classes.infoIconTooltip,
               }}
               open={openInfoTooltip}
