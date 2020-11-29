@@ -44,10 +44,14 @@ export const useStyles = makeStyles(theme => ({
     marginBottom: theme.customSpacing.large,
   },
   usernameWrapper: {
+    display: 'flex',
+    alignItems: 'center',
     marginBottom: theme.customSpacing.midLarge,
     width: '100%',
   },
   passwordWrapper: {
+    display: 'flex',
+    alignItems: 'center',
     marginBottom: theme.customSpacing.large,
     width: '100%',
   },

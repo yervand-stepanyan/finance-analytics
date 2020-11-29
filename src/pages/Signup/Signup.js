@@ -16,14 +16,16 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import API from '../../fetchAPI';
 import {
   BUTTON_LABEL,
-  IMAGE,
+  ICON_TOOLTIP_LABEL,
   LOADER,
+  IMAGE,
   SIGN_UP_SECTION,
   SNACKBAR,
 } from '../../globals/constants';
 import Loader from '../../components/Loader';
 import normalizeString from '../../helpers/normalizeString';
 import ROUTES from '../../routes';
+import TooltipIconComponent from '../../components/TooltipIconComponent';
 import { useStyles } from './Signup.style';
 import validateEmail from '../../helpers/validateEmail';
 import validatePassword from '../../helpers/validatePassword';
@@ -34,6 +36,14 @@ function Signup({ handleOpenSnackbar, handleSnackbarContent }) {
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [openPasswordErrorTooltip, setOpenPasswordErrorTooltip] = useState(
+    false
+  );
+  const [openPasswordInfoTooltip, setOpenPasswordInfoTooltip] = useState(false);
+  const [openUsernameErrorTooltip, setOpenUsernameErrorTooltip] = useState(
+    false
+  );
+  const [openUsernameInfoTooltip, setOpenUsernameInfoTooltip] = useState(false);
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState('');
@@ -101,6 +111,30 @@ function Signup({ handleOpenSnackbar, handleSnackbarContent }) {
     }
   };
 
+  const handleShowPasswordErrorTooltip = () => {
+    setOpenPasswordErrorTooltip(!openPasswordErrorTooltip);
+  };
+
+  const handleShowPasswordInfoTooltip = () => {
+    setOpenPasswordInfoTooltip(!openPasswordInfoTooltip);
+  };
+
+  const handleShowUsernameErrorTooltip = () => {
+    setOpenUsernameErrorTooltip(!openUsernameErrorTooltip);
+  };
+
+  const handleShowUsernameInfoTooltip = () => {
+    setOpenUsernameInfoTooltip(!openUsernameInfoTooltip);
+  };
+
+  const handleInputFocus = () => {
+    setOpenUsernameErrorTooltip(false);
+    setOpenUsernameInfoTooltip(false);
+
+    setOpenPasswordErrorTooltip(false);
+    setOpenPasswordInfoTooltip(false);
+  };
+
   return (
     <div className={classes.signupContainer}>
       <div className={classes.contentWrapper}>
@@ -122,9 +156,20 @@ function Signup({ handleOpenSnackbar, handleSnackbarContent }) {
                   ),
                 }}
                 onChange={e => handleUsernameChange(e)}
+                onFocus={handleInputFocus}
                 onKeyDown={e => handleSubmitOnEnter(e)}
                 placeholder={SIGN_UP_SECTION.placeholder.username}
                 value={username}
+              />
+              <TooltipIconComponent
+                errorMessageTitle={ICON_TOOLTIP_LABEL.username.invalidEmail}
+                handleShowErrorTooltip={handleShowUsernameErrorTooltip}
+                handleShowInfoTooltip={handleShowUsernameInfoTooltip}
+                infoMessageTitle={ICON_TOOLTIP_LABEL.username.infoMessage}
+                isCheck={isEmailValid}
+                isError={!!username && !isEmailValid}
+                openErrorTooltip={openUsernameErrorTooltip}
+                openInfoTooltip={openUsernameInfoTooltip}
               />
             </div>
             <div className={classes.passwordWrapper}>
@@ -150,10 +195,21 @@ function Signup({ handleOpenSnackbar, handleSnackbarContent }) {
                   ),
                 }}
                 onChange={e => handlePasswordChange(e)}
+                onFocus={handleInputFocus}
                 onKeyDown={e => handleSubmitOnEnter(e)}
                 placeholder={SIGN_UP_SECTION.placeholder.password}
                 type={showPassword ? 'text' : 'password'}
                 value={password}
+              />
+              <TooltipIconComponent
+                errorMessageTitle={ICON_TOOLTIP_LABEL.password.invalidPassword}
+                handleShowErrorTooltip={handleShowPasswordErrorTooltip}
+                handleShowInfoTooltip={handleShowPasswordInfoTooltip}
+                infoMessageTitle={ICON_TOOLTIP_LABEL.password.infoMessage}
+                isCheck={isPasswordValid}
+                isError={!!password && !isPasswordValid}
+                openErrorTooltip={openPasswordErrorTooltip}
+                openInfoTooltip={openPasswordInfoTooltip}
               />
             </div>
             <div className={classes.buttonWrapper}>
