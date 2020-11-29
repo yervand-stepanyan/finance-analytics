@@ -19,9 +19,12 @@ const TAB_HEIGHT = 48;
 const TAB_BORDER_SIZE = 3;
 
 const cardBackgroundColor = '#edfcff';
+const checkedIconColor = '#20BA66';
 const disabledFieldColor = '#999999';
+const errorIconColor = '#EA4335';
 const fieldNavBackgroundColor = '#ffffff';
 const headerBackgroundColor = '#ffffff';
+const infoIconColor = '#3F51B5';
 const lightTextColor = '#ffffff';
 const mainBackgroundColor = '#F5F7F9';
 const mainTextColor = '#333333';
@@ -39,9 +42,12 @@ export const theme = createMuiTheme({
   },
   color: {
     cardBackgroundColor,
+    checkedIconColor,
     disabledFieldColor,
+    errorIconColor,
     fieldNavBackgroundColor,
     headerBackgroundColor,
+    infoIconColor,
     lightTextColor,
     mainBackgroundColor,
     mainTextColor,
