@@ -163,3 +163,15 @@ export const TAB_LIST = [
   { title: 'Payments', checked: false },
   { title: 'Invoices', checked: false },
 ];
+export const ICON_TOOLTIP_LABEL = {
+  password: {
+    infoMessage:
+      'Minimum 10 characters,\nAt least 1 uppercase letter,\nAt least 1 lowercase letter,\nAt least 1 number,\nAt least 1 special character.',
+    invalidPassword:
+      'Minimum 10 characters,\nAt least 1 uppercase letter,\nAt least 1 lowercase letter,\nAt least 1 number,\nAt least 1 special character.',
+  },
+  username: {
+    infoMessage: 'Your email address!',
+    invalidEmail: 'Incorrect email format!',
+  },
+};
