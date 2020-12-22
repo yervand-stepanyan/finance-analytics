@@ -81,17 +81,15 @@ function Signup({ handleOpenSnackbar, handleSnackbarContent }) {
       const routeToRedirect = ROUTES.signin;
       const normalizedUsername = normalizeString(username);
       const newUser = { username: normalizedUsername, password };
-      const response = await API.postUser(newUser);
+      await API.postUser(newUser);
 
-      if (response.username) {
-        handleSnackbarContent(true, SNACKBAR.message.signUpSuccess);
+      handleSnackbarContent(true, SNACKBAR.message.signUpSuccess);
 
-        history.push(routeToRedirect);
-      } else {
-        handleSnackbarContent(false, response.message);
-      }
+      history.push(routeToRedirect);
     } catch (e) {
       setLoading(false);
+
+      handleSnackbarContent(false, e.message);
     } finally {
       setLoading(false);
 

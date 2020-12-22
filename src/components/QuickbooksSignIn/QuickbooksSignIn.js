@@ -34,7 +34,7 @@ function QuickbooksSignIn({ accessToken }) {
           <input
             type="hidden"
             name="redirectUri"
-            value="http://localhost:3000/finance/signin/callback"
+            value="http://yervand-stepanyan.github.io/finance-analytics/#/finance/signin/callback"
           />
           <Button
             color="primary"

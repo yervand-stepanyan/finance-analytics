@@ -19,7 +19,6 @@ import {
   IMAGE,
   LOADER,
   SIGN_IN_SECTION,
-  SNACKBAR,
 } from '../../globals/constants';
 import Loader from '../../components/Loader';
 import normalizeString from '../../helpers/normalizeString';
@@ -76,27 +75,22 @@ function Signin({
       const normalizedUsername = normalizeString(username);
       const userToSignIn = { username: normalizedUsername, password };
       const response = await API.postToken(userToSignIn);
+      const accessTokenData = {
+        accessToken: response.accessToken,
+        accessTokenExpiresAt: response.accessTokenExpiresAt,
+      };
+      const user = await API.getCurrentUser(accessTokenData.accessToken);
 
-      if (response.user) {
-        const accessTokenData = {
-          accessToken: response.accessToken,
-          accessTokenExpiresAt: response.accessTokenExpiresAt,
-        };
-        const user = await API.getCurrentUser(accessTokenData.accessToken);
+      handleCurrentUser({ accessTokenData, user });
 
-        if (user.username) {
-          handleCurrentUser({ accessTokenData, user });
-
-          setTimeout(() => {
-            history.push(routeToRedirect);
-          });
-        }
-      } else {
-        handleSnackbarContent(false, SNACKBAR.message.incorrectCredentials);
-        handleOpenSnackbar();
-      }
+      setTimeout(() => {
+        history.push(routeToRedirect);
+      });
     } catch (e) {
       setLoading(false);
+
+      handleSnackbarContent(false, e.message);
+      handleOpenSnackbar();
     } finally {
       setLoading(false);
     }

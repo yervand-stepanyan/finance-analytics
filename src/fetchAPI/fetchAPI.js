@@ -20,8 +20,13 @@ async function requestToken({ url, method, body }) {
   };
 
   const response = await fetch(url, fetchOptions);
+  const result = await response.json();
 
-  return response.json();
+  if (result.status >= 400) {
+    throw Error(result.message);
+  }
+
+  return result;
 }
 
 async function requestJSON({ url, method, body }) {
@@ -34,8 +39,13 @@ async function requestJSON({ url, method, body }) {
   };
 
   const response = await fetch(url, fetchOptions);
+  const result = await response.json();
 
-  return response.json();
+  if (result.status >= 400) {
+    throw Error(result.message);
+  }
+
+  return result;
 }
 
 async function requestUser({ url, method, accessToken }) {
